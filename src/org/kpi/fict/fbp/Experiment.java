@@ -18,6 +18,7 @@ public class Experiment extends Network {
 
   /**
    * Network definition.
+   * @exception Exception any exceptions
    */
   @Override
   protected void define() throws Exception {

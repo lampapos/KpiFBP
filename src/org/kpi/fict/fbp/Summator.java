@@ -21,7 +21,10 @@ import com.jpmorrsn.fbp.engine.Packet;
 @InPort(value = "IN", description = "Packets to be summed", type = Integer.class)
 public class Summator extends Component {
 
+  /** Input port. */
   private InputPort inport;
+  
+  /** Output port. */
   private OutputPort outport;
 
   @SuppressWarnings("unchecked")
