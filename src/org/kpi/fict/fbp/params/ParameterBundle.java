@@ -15,9 +15,11 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
  */
 @XStreamAlias("bundle")
 public class ParameterBundle {
+  /** Parameters list. */
   @XStreamImplicit
   private final List<Parameter> parameters;
 
+  /** Store. We transform parameters list in map <parameter name, parameter value>. */
   private transient Map<String, Parameter> store;
 
   /**
@@ -41,10 +43,20 @@ public class ParameterBundle {
     return this;
   }
 
+  /**
+   * Parameter descriptor getter.
+   * @param paramName the parameter name
+   * @return parameter descriptor.
+   */
   public Parameter get(final String paramName) {
     return store.get(paramName);
   }
 
+  /**
+   * Parameter value getter.
+   * @param paramName the parameter name
+   * @return the parameter value casted to string
+   */
   public String getString(final String paramName) {
     final Parameter param = store.get(paramName);
 
@@ -55,6 +67,11 @@ public class ParameterBundle {
     return null;
   }
 
+  /**
+   * Parameter value getter.
+   * @param paramName the parameter name
+   * @return the parameter value casted to double
+   */
   public Double getDouble(final String paramName) {
     final String value = getString(paramName);
 
@@ -65,6 +82,11 @@ public class ParameterBundle {
     return null;
   }
 
+  /**
+   * Parameter value getter.
+   * @param paramName the parameter name
+   * @return the parameter value casted to long
+   */
   public Long getLong(final String paramName) {
     final String value = getString(paramName);
 
@@ -75,6 +97,11 @@ public class ParameterBundle {
     return null;
   }
 
+  /**
+   * Parameter value getter.
+   * @param paramName the parameter name
+   * @return the parameter value casted to integer
+   */
   public Integer getInt(final String paramName) {
     final String value = getString(paramName);
 
@@ -85,6 +112,11 @@ public class ParameterBundle {
     return null;
   }
 
+  /**
+   * Parameter value getter.
+   * @param paramName the parameter name
+   * @return the parameter value casted to boolean
+   */
   public Boolean getBoolean(final String paramName) {
     final String value = getString(paramName);
 

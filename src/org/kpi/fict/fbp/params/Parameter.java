@@ -12,12 +12,14 @@ import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("parameter")
-@XStreamConverter(value=ToAttributedValueConverter.class, strings={"value"})
+@XStreamConverter(value = ToAttributedValueConverter.class, strings = { "value" })
 public class Parameter {
 
+  /** Parmeter name. */
   @XStreamAsAttribute
   private final String name;
 
+  /** Parameter value. */
   private final String value;
 
   /**

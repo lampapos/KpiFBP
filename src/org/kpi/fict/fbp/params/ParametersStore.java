@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.kpi.fict.fbp.javafbp.ParameterizedComponent;
 
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 
@@ -19,6 +18,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("ParametersStore")
 public class ParametersStore {
+  /** Parameters store in form of map <component name, component parameters bundle>. */
   private Map<String, ParameterBundle> store;
 
   /**
@@ -71,19 +71,34 @@ public class ParametersStore {
     return new ParameterBundle(res);
   }
 
+  /**
+   * Parameter store builder.
+   * @author Pustovit Michael, pustovitm@gmail.com
+   */
   public static class Builder {
 
+    /** Result store. */
     private final Map<String, ParameterBundle> store;
 
+    /** Default constructor. */
     public Builder() {
       store = new HashMap<String, ParameterBundle>();
     }
 
+    /**
+     * Add component configuration.
+     * @param componentName the component name
+     * @param parameters the component parameter list
+     * @return the builder for chaining
+     */
     public Builder addComponentConfiguration(final String componentName, final List<Parameter> parameters) {
       store.put(componentName, new ParameterBundle(parameters));
       return this;
     }
 
+    /**
+     * @return the builded instance
+     */
     public ParametersStore build() {
       final ParametersStore res = new ParametersStore();
 

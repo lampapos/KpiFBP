@@ -8,23 +8,27 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 
+/**
+ * Component parameter annotation.
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @Inherited
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentParameter {
 
   /**
-   * @return the parameter name
+   * The parameter name.
    */
   String name();
 
   /**
-   * @return the parameter type (used for user input validation)
+   * The parameter type (used for user input validation). ParameterType constants should be used.
    */
   ParameterType type();
 
   /**
-   * @return the default parameters value
+   * The default parameter value.
    */
   String defaultValue();
 }
