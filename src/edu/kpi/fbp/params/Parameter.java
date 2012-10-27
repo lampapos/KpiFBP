@@ -1,4 +1,4 @@
-package org.kpi.fict.fbp.params;
+package edu.kpi.fbp.params;
 
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;

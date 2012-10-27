@@ -1,16 +1,17 @@
-package org.kpi.fict.fbp.sample;
+package edu.kpi.fbp.sample;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kpi.fict.fbp.javafbp.ParameterizedNetwork;
-import org.kpi.fict.fbp.params.Parameter;
-import org.kpi.fict.fbp.params.ParametersStore;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
+
+import edu.kpi.fbp.javafbp.ParameterizedNetwork;
+import edu.kpi.fbp.params.Parameter;
+import edu.kpi.fbp.params.ParametersStore;
 
 /**
  * Test class.
@@ -55,9 +56,9 @@ public class Experiment extends ParameterizedNetwork {
    */
   @Override
   protected void define() throws Exception {
-    component("_Generate", org.kpi.fict.fbp.sample.Generator.class);
-    component("_Sum", org.kpi.fict.fbp.sample.Summator.class);
-    component("_Print_result", org.kpi.fict.fbp.sample.PrintResult.class);
+    component("_Generate", edu.kpi.fbp.sample.Generator.class);
+    component("_Sum", edu.kpi.fbp.sample.Summator.class);
+    component("_Print_result", edu.kpi.fbp.sample.PrintResult.class);
 
     connect(component("_Generate"), port("OUT"), component("_Sum"), port("IN"));
     connect(component("_Sum"), port("OUT"), component("_Print_result"), port("IN"));

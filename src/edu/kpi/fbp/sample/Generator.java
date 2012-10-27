@@ -1,14 +1,15 @@
-package org.kpi.fict.fbp.sample;
+package edu.kpi.fbp.sample;
 
-import org.kpi.fict.fbp.javafbp.ParameterizedComponent;
-import org.kpi.fict.fbp.params.ComponentParameter;
-import org.kpi.fict.fbp.params.ParameterBundle;
-import org.kpi.fict.fbp.params.ParameterType;
 
 import com.jpmorrsn.fbp.engine.ComponentDescription;
 import com.jpmorrsn.fbp.engine.OutPort;
 import com.jpmorrsn.fbp.engine.OutputPort;
 import com.jpmorrsn.fbp.engine.Packet;
+
+import edu.kpi.fbp.javafbp.ParameterizedComponent;
+import edu.kpi.fbp.params.ComponentParameter;
+import edu.kpi.fbp.params.ParameterBundle;
+import edu.kpi.fbp.params.ParameterType;
 
 /**
  * Simple generator.

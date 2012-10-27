@@ -1,9 +1,10 @@
-package org.kpi.fict.fbp.javafbp;
+package edu.kpi.fbp.javafbp;
 
 
-import org.kpi.fict.fbp.params.ParameterBundle;
 
 import com.jpmorrsn.fbp.engine.Component;
+
+import edu.kpi.fbp.params.ParameterBundle;
 
 
 

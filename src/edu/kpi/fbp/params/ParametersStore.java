@@ -1,4 +1,4 @@
-package org.kpi.fict.fbp.params;
+package edu.kpi.fbp.params;
 
 
 import java.util.ArrayList;
@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.kpi.fict.fbp.javafbp.ParameterizedComponent;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+import edu.kpi.fbp.javafbp.ParameterizedComponent;
 
 
 /**

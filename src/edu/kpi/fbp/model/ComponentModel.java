@@ -1,4 +1,4 @@
-package org.kpi.fict.fbp.model;
+package edu.kpi.fbp.model;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package org.kpi.fict.fbp.sample;
+package edu.kpi.fbp.sample;
 
 
 import com.jpmorrsn.fbp.engine.Component;

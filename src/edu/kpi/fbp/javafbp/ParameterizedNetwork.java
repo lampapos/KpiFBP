@@ -1,11 +1,12 @@
-package org.kpi.fict.fbp.javafbp;
+package edu.kpi.fbp.javafbp;
 
 
-import org.kpi.fict.fbp.params.ParameterBundle;
-import org.kpi.fict.fbp.params.ParametersStore;
 
 import com.jpmorrsn.fbp.engine.Component;
 import com.jpmorrsn.fbp.engine.Network;
+
+import edu.kpi.fbp.params.ParameterBundle;
+import edu.kpi.fbp.params.ParametersStore;
 
 /**
  * Extended network class componets of which uses parameters.

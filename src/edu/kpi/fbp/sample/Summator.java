@@ -1,4 +1,4 @@
-package org.kpi.fict.fbp.sample;
+package edu.kpi.fbp.sample;
 
 import java.util.LinkedList;
 import java.util.List;
