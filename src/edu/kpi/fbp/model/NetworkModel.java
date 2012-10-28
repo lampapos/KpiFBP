@@ -1,12 +1,16 @@
 package edu.kpi.fbp.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * Network structure.
  * @author Pustovit Michael, pustovitm@gmail.com
  */
+@XStreamAlias("network")
 public class NetworkModel {
   /** Network components. */
   private final List<ComponentModel> components;
@@ -28,7 +32,11 @@ public class NetworkModel {
       final Map<String, Object> extra) {
     this.components = components;
     this.links = links;
-    this.extra = extra;
+    if (extra != null) {
+      this.extra = extra;
+    } else {
+      this.extra = new HashMap<String, Object>();
+    }
   }
 
   /**

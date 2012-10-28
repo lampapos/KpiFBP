@@ -1,4 +1,4 @@
-package edu.kpi.fbp.sample;
+package edu.kpi.fbp.sample.network;
 
 
 import com.jpmorrsn.fbp.engine.Component;

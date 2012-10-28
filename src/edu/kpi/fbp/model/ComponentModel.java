@@ -2,18 +2,25 @@ package edu.kpi.fbp.model;
 
 import java.util.Map;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 /**
  * Component model.
  * @author Pustovit Michael, pustovitm@gmail.com
  */
+@XStreamAlias("component")
 public class ComponentModel {
   /** The component Java class name. */
+  @XStreamAsAttribute
   private final String className;
   /** The component name (must be unique within single network). */
+  @XStreamAsAttribute
   private final String name;
   /** Port sizes map (<Port name, Port size>). */
   private final Map<String, Integer> portSizes;
   /** The component source URL - where we can find component sources. */
+  @XStreamAsAttribute
   private final String sourceUrl;
 
   /**
@@ -60,6 +67,10 @@ public class ComponentModel {
     return sourceUrl;
   }
 
-
+  @Override
+  public String toString() {
+    return "ComponentModel [className=" + className + ", name=" + name + ", portSizes=" + portSizes + ", sourceUrl="
+        + sourceUrl + "]";
+  }
 
 }
