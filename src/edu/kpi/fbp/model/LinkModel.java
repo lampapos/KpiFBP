@@ -1,17 +1,25 @@
 package edu.kpi.fbp.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 /**
  * Network link model.
  * @author Pustovit Michael, pustovitm@gmail.com
  */
+@XStreamAlias("link")
 public class LinkModel {
   /** The component where link begins. */
+  @XStreamAsAttribute
   final String fromComponent;
   /** The component port where link begins. */
+  @XStreamAsAttribute
   final String fromPort;
   /** The component where link ends. */
+  @XStreamAsAttribute
   final String toComponent;
   /** The component port where link ends. */
+  @XStreamAsAttribute
   final String toPort;
 
   /**
@@ -53,6 +61,12 @@ public class LinkModel {
    */
   public final String getToPort() {
     return toPort;
+  }
+
+  @Override
+  public String toString() {
+    return "LinkModel [fromComponent=" + fromComponent + ", fromPort=" + fromPort + ", toComponent=" + toComponent
+        + ", toPort=" + toPort + "]";
   }
 
 }

@@ -1,4 +1,4 @@
-package edu.kpi.fbp.sample;
+package edu.kpi.fbp.sample.network;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -56,9 +56,9 @@ public class Experiment extends ParameterizedNetwork {
    */
   @Override
   protected void define() throws Exception {
-    component("_Generate", edu.kpi.fbp.sample.Generator.class);
-    component("_Sum", edu.kpi.fbp.sample.Summator.class);
-    component("_Print_result", edu.kpi.fbp.sample.PrintResult.class);
+    component("_Generate", edu.kpi.fbp.sample.network.Generator.class);
+    component("_Sum", edu.kpi.fbp.sample.network.Summator.class);
+    component("_Print_result", edu.kpi.fbp.sample.network.PrintResult.class);
 
     connect(component("_Generate"), port("OUT"), component("_Sum"), port("IN"));
     connect(component("_Sum"), port("OUT"), component("_Print_result"), port("IN"));
