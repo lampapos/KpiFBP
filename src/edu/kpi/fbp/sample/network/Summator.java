@@ -1,6 +1,6 @@
 package edu.kpi.fbp.sample.network;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.jpmorrsn.fbp.engine.Component;
@@ -23,7 +23,7 @@ public class Summator extends Component {
 
   /** Input port. */
   private InputPort inport;
-  
+
   /** Output port. */
   private OutputPort outport;
 
@@ -32,17 +32,17 @@ public class Summator extends Component {
   protected void execute() {
 
     Packet<Integer> p;
-    final List<Packet<Integer>> packets = new LinkedList<>();
+    final List<Packet<Integer>> packets = new ArrayList<Packet<Integer>>();
     while ((p = inport.receive()) != null) {
       packets.add(p);
       drop(p);
     }
 
     long sum = 0;
-    for (Packet<Integer> pack : packets) {
+    for (final Packet<Integer> pack : packets) {
       sum += pack.getContent();
     }
-    
+
     outport.send(create(Long.toString(sum)));
   }
 
