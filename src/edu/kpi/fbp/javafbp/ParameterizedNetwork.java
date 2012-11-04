@@ -18,10 +18,14 @@ public abstract class ParameterizedNetwork extends Network {
   private final ParametersStore parametersStore;
 
   /**
-   * @param paramStore parameter store
+   * @param paramStore parameter store (if it's null therefore default values will be used)
    */
   public ParameterizedNetwork(final ParametersStore paramStore) {
-    this.parametersStore = paramStore;
+    if (paramStore == null) {
+      this.parametersStore = new ParametersStore.Builder().build();
+    } else {
+      this.parametersStore = paramStore;
+    }
   }
 
   @Override

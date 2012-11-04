@@ -63,6 +63,20 @@ public class LinkModel {
     return toPort;
   }
 
+  /**
+   * @return the full "from" string (e.g. "Generator.OUT")
+   */
+  public final String getFrom() {
+    return String.format("%s.%s", fromComponent, fromPort);
+  }
+
+  /**
+   * @return the full "to" string (e.g. "Summator.IN")
+   */
+  public final String getTo() {
+    return String.format("%s.%s", toComponent, toPort);
+  }
+
   @Override
   public String toString() {
     return "LinkModel [fromComponent=" + fromComponent + ", fromPort=" + fromPort + ", toComponent=" + toComponent
