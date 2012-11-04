@@ -45,4 +45,9 @@ public class Parameter {
   public final String getValue() {
     return value;
   }
+
+  @Override
+  public String toString() {
+    return "Parameter [name=" + name + ", value=" + value + "]";
+  }
 }
