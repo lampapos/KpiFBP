@@ -1,4 +1,4 @@
-<network>
+<network name="SampleNetwork">
   <components>
     <component className="edu.kpi.fbp.sample.network.Generator" name="_Generate" sourceUrl="http://example.com"/>
     <component className="edu.kpi.fbp.sample.network.Summator" name="_Sum" sourceUrl="http://example.com"/>
