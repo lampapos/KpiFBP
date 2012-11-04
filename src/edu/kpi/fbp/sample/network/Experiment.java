@@ -31,7 +31,7 @@ public class Experiment extends ParameterizedNetwork {
    * @throws Exception some exceptions
    */
   public static void main(final String[] args) throws Exception {
-    final List<Parameter> parameters = new ArrayList<>();
+    final List<Parameter> parameters = new ArrayList<Parameter>();
     parameters.add(new Parameter("count", "30"));
 
     final ParametersStore paramStore =
