@@ -39,7 +39,7 @@ public final class ModelBuilder {
     links.add(new LinkModel("_Generate", "OUT", "_Sum", "IN"));
     links.add(new LinkModel("_Sum", "OUT", "_Print_result", "IN"));
 
-    final NetworkModel netModel = new NetworkModel(components, links, null);
+    final NetworkModel netModel = new NetworkModel("SampleNetwork", components, links, null);
 
     final String modelStr = XmlIo.serialize(netModel);
 

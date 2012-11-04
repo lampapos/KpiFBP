@@ -4,7 +4,6 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.CompactWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
@@ -60,7 +59,7 @@ public class Experiment extends ParameterizedNetwork {
     component("_Sum", edu.kpi.fbp.sample.network.Summator.class);
     component("_Print_result", edu.kpi.fbp.sample.network.PrintResult.class);
 
-    connect(component("_Generate"), port("OUT"), component("_Sum"), port("IN"));
-    connect(component("_Sum"), port("OUT"), component("_Print_result"), port("IN"));
+    connect("_Generate.OUT", "_Sum.IN");
+    connect("_Sum.OUT", "_Print_result.IN");
   }
 }

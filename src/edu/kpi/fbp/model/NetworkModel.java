@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Network structure.
@@ -12,6 +13,11 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("network")
 public class NetworkModel {
+  /** The network name. */
+  @XStreamAsAttribute
+  @XStreamAlias("name")
+  private final String networkName;
+
   /** Network components. */
   private final List<ComponentModel> components;
 
@@ -23,13 +29,17 @@ public class NetworkModel {
 
   /**
    * Default constructor.
+   * @param networkName the network name
    * @param components the list of network components
    * @param links the list of network links
    * @param extra the extra network information
    */
-  public NetworkModel(final List<ComponentModel> components,
+  public NetworkModel(
+      final String networkName,
+      final List<ComponentModel> components,
       final List<LinkModel> links,
       final Map<String, Object> extra) {
+    this.networkName = networkName;
     this.components = components;
     this.links = links;
     if (extra != null) {
@@ -37,6 +47,13 @@ public class NetworkModel {
     } else {
       this.extra = new HashMap<String, Object>();
     }
+  }
+
+  /**
+   * @return the network name
+   */
+  public String getNetworkName() {
+    return networkName;
   }
 
   /**

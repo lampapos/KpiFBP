@@ -47,7 +47,9 @@
     <module name="MethodParamPad"/>
     <module name="NoWhitespaceAfter"/>
     <module name="NoWhitespaceBefore"/>
-    <module name="OperatorWrap"/>
+    <module name="OperatorWrap">
+        <property name="tokens" value="PLUS" default="false" />
+    </module>
     <module name="ParenPad"/>
     <module name="WhitespaceAfter">
       <property name="tokens" value="COMMA,SEMI"/>
