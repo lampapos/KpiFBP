@@ -29,7 +29,8 @@ public class ComponentModel {
    * @param portSizes port sizes map (<Port name, Port size>)
    * @param sourceUrl the component source URL - where we can find component sources
    */
-  public ComponentModel(final String className,
+  public ComponentModel(
+      final String className,
       final String name,
       final Map<String, Integer> portSizes,
       final String sourceUrl) {
