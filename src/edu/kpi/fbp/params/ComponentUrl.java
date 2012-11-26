@@ -12,6 +12,9 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComponentUrl {
-  /** The URL where component source code may be found. */
+  /**
+   *  The URL where component source code may be found.
+   *  $$URL сховища, де може бути знайдено JAR архів з даним компонетом.$$
+   */
   String value();
 }

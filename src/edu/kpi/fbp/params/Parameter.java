@@ -27,8 +27,9 @@ public class Parameter {
 
   /**
    * Constructs component parameter.
-   * @param pName the parameter name
-   * @param pValue the parameter value
+   * $$Конструктор для параметра компоненту.$$
+   * @param pName the parameter name $$ім'я параметру$$
+   * @param pValue the parameter value $$назва параметру$$
    */
   public Parameter(final String pName, final String pValue) {
     this.name = pName;
@@ -36,14 +37,14 @@ public class Parameter {
   }
 
   /**
-   * @return the name
+   * @return the name $$ім'я параметру$$
    */
   public final String getName() {
     return name;
   }
 
   /**
-   * @return the parameter value
+   * @return the parameter value $$назва параметру$$
    */
   public final String getValue() {
     return value;

@@ -22,16 +22,19 @@ public @interface ComponentParameter {
 
   /**
    * The parameter name.
+   * $$Назва параметру.$$
    */
   String name();
 
   /**
    * The parameter type (used for user input validation). ParameterType constants should be used.
+   * $$Тип параметру (використовується при валідації значення параметра). У якості типу має бути використана константа з ParameterType.$$
    */
   ParameterType type();
 
   /**
    * The default parameter value.
+   * $$Значення параметра за замовчуванням.$$
    */
   String defaultValue();
 }

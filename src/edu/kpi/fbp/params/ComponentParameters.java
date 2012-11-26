@@ -22,6 +22,7 @@ public @interface ComponentParameters {
 
   /**
    * Component parameter. If component has single parameter so this annotation may be not used.
+   * $$Параметри компонента. Якщо у компонента тільки один параметр, то дану анотацію використовувати не обов'язково.$$
    */
   ComponentParameter[] value();
 }

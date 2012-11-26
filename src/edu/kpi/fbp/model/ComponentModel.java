@@ -44,28 +44,28 @@ public class ComponentModel {
   }
 
   /**
-   * @return the component Java class name
+   * @return the component Java class name $$повне ім'я Java-класу, що відповідає даному компоненту$$
    */
   public final String getClassName() {
     return className;
   }
 
   /**
-   * @return the component name (must be unique within single network)
+   * @return the component name (must be unique within single network) $$ім'я компоненту (має бути унікальним у межах однієї мережі)$$
    */
   public final String getName() {
     return name;
   }
 
   /**
-   * @return port sizes map (<Port name, Port size>)
+   * @return port sizes map (<Port name, Port size>)  $$словник з розмірами портів-масивів$$
    */
   public final Map<String, Integer> getPortSizes() {
     return portSizes;
   }
 
   /**
-   * @return the component source URL - where we can find component sources
+   * @return the component source URL - where we can find component sources $$URL адреса сховища, де можна знайти JAR-архів, що містить класс компонента$$
    */
   public final String getSourceUrl() {
     return sourceUrl;

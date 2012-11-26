@@ -32,10 +32,10 @@ public class NetworkModel {
 
   /**
    * Default constructor.
-   * @param networkName the network name
-   * @param components the list of network components
-   * @param links the list of network links
-   * @param extra the extra network information
+   * @param networkName the network name $$Назва мережі$$
+   * @param components the list of network components $$Перелік компонентів мережі$$
+   * @param links the list of network links $$Перелік зв'язків мережі$$
+   * @param extra the extra network information $$Додаткова інформація про мережу (наприклад, для відображення мережі)$$
    */
   public NetworkModel(
       final String networkName,
@@ -53,28 +53,28 @@ public class NetworkModel {
   }
 
   /**
-   * @return the network name
+   * @return the network name $$Назва мережі$
    */
   public String getNetworkName() {
     return networkName;
   }
 
   /**
-   * @return the network components
+   * @return the network components $$Перелік компонентів мережі$$
    */
   public final List<ComponentModel> getComponents() {
     return components;
   }
 
   /**
-   * @return the network links
+   * @return the network links $$Перелік зв'язків мережі$$
    */
   public final List<LinkModel> getLinks() {
     return links;
   }
 
   /**
-   * @return the network extra information
+   * @return the network extra information $$Додаткова інформація про мережу (наприклад, для відображення мережі)$$
    */
   public final Map<String, Object> getExtra() {
     return extra;

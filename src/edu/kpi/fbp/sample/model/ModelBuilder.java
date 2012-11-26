@@ -16,6 +16,9 @@ import edu.kpi.fbp.utils.XmlIo;
 
 /**
  * Sample class which builds simple network and saves it in XML form.
+ *
+ * $$Клас, що будує просту мережу з XML представлення.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public final class ModelBuilder {

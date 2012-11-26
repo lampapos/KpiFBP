@@ -4,7 +4,10 @@ import edu.kpi.fbp.javafbp.ComponentDescriptor;
 import edu.kpi.fbp.sample.network.Generator;
 
 /**
- * Networ component descriptor sample.
+ * Network component descriptor sample.
+ *
+ * $$Приклад дескриптора компонента.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public final class ComponentDescriptorSample {
