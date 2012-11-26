@@ -5,6 +5,9 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Network link model.
+ *
+ * $$Модель дескриптора зв'язку мережі.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("link")

@@ -7,6 +7,9 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Component model.
+ *
+ * $$Модель дескриптора компоненту мережі.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("component")
@@ -24,10 +27,10 @@ public class ComponentModel {
   private final String sourceUrl;
 
   /**
-   * @param className the component Java class name
-   * @param name the component name (must be unique within single network)
-   * @param portSizes port sizes map (<Port name, Port size>)
-   * @param sourceUrl the component source URL - where we can find component sources
+   * @param className the component Java class name $$повне ім'я Java-класу, що відповідає даному компоненту$$
+   * @param name the component name (must be unique within single network) $$ім'я компоненту (має бути унікальним у межах однієї мережі)$$
+   * @param portSizes port sizes map (<Port name, Port size>) $$словник з розмірами портів-масивів$$
+   * @param sourceUrl the component source URL - where we can find component sources $$URL адреса сховища, де можна знайти JAR-архів, що містить класс компонента$$
    */
   public ComponentModel(
       final String className,

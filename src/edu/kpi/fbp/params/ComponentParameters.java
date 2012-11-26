@@ -10,6 +10,9 @@ import java.lang.annotation.Target;
 
 /**
  * Component parameters list annotation.
+ *
+ * $$Аннотація списку параметрів компонента (містить список анотацій ComponentParameter).$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @Inherited

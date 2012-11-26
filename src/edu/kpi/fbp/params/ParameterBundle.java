@@ -11,6 +11,9 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * Component parameter bundle (map, where key is parameter name).
+ *
+ * $$Словник, що у якості ключа використовує назву параметра компонента, а у якості значення - дескриптор параметру.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("bundle")
@@ -45,6 +48,9 @@ public class ParameterBundle {
 
   /**
    * Parameter descriptor getter.
+   *
+   * $$Віддати описувач параметру за його строковим ім'ям.$$
+   *
    * @param paramName the parameter name
    * @return parameter descriptor.
    */
@@ -54,8 +60,11 @@ public class ParameterBundle {
 
   /**
    * Parameter value getter.
-   * @param paramName the parameter name
-   * @return the parameter value casted to string
+   *
+   * $$Отримати значення параметру, приведене до типу String.$$
+   *
+   * @param paramName the parameter name $$ім'я параметру$$
+   * @return the parameter value casted to string $$значення параметру, приведене до типу String$$
    */
   public String getString(final String paramName) {
     final Parameter param = store.get(paramName);
@@ -69,7 +78,10 @@ public class ParameterBundle {
 
   /**
    * Parameter value getter.
-   * @param paramName the parameter name
+   *
+   * $$Отримати значення параметру, приведене до типу Double.$$
+   *
+   * @param paramName the parameter name $$ім'я параметру$$
    * @return the parameter value casted to double
    */
   public Double getDouble(final String paramName) {
@@ -84,7 +96,10 @@ public class ParameterBundle {
 
   /**
    * Parameter value getter.
-   * @param paramName the parameter name
+   *
+   * $$Отримати значення параметру, приведене до типу Long.$$
+   *
+   * @param paramName the parameter name $$ім'я параметру$$
    * @return the parameter value casted to long
    */
   public Long getLong(final String paramName) {
@@ -99,7 +114,10 @@ public class ParameterBundle {
 
   /**
    * Parameter value getter.
-   * @param paramName the parameter name
+   *
+   * $$Отримати значення параметру, приведене до типу Integer.$$
+   *
+   * @param paramName the parameter name $$ім'я параметру$$
    * @return the parameter value casted to integer
    */
   public Integer getInt(final String paramName) {
@@ -114,7 +132,10 @@ public class ParameterBundle {
 
   /**
    * Parameter value getter.
-   * @param paramName the parameter name
+   *
+   * $$Отримати значення параметру, приведене до типу Boolean.$$
+   *
+   * @param paramName the parameter name $$ім'я параметру$$
    * @return the parameter value casted to boolean
    */
   public Boolean getBoolean(final String paramName) {
@@ -128,8 +149,12 @@ public class ParameterBundle {
   }
 
   /**
-   * @param name parameter name
-   * @return if bundle contains parameter with such name
+   * If this bundle contains parameter with defined name.
+   *
+   * $$Чи містить данний словник параметр зі вказанним ім'ям.$$
+   *
+   * @param name parameter name $$ім'я параметру$$
+   * @return if bundle contains parameter with such name $$чи містить данний словник параметр зі вказанним ім'ям$$
    */
   public boolean contains(final String name) {
     return store.containsKey(name);

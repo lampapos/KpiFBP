@@ -1,7 +1,5 @@
 package edu.kpi.fbp.javafbp;
 
-
-
 import com.jpmorrsn.fbp.engine.Component;
 import com.jpmorrsn.fbp.engine.Network;
 
@@ -10,6 +8,9 @@ import edu.kpi.fbp.params.ParametersStore;
 
 /**
  * Extended network class componets of which uses parameters.
+ *
+ * $$Модернізований клас мережі JavaFBP.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public abstract class ParameterizedNetwork extends Network {

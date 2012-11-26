@@ -10,6 +10,9 @@ import java.lang.annotation.Target;
 
 /**
  * Component parameter annotation.
+ *
+ * $$Аннотація параметру компонента.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @Inherited

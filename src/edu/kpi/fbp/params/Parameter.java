@@ -9,6 +9,9 @@ import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 
 /**
  * Component parameter.
+ *
+ * $$Параметр компонента.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("parameter")

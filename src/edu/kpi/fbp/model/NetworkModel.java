@@ -9,6 +9,9 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Network structure.
+ *
+ * $$Модель структури мережі.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @XStreamAlias("network")

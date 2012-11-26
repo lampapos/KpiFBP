@@ -6,6 +6,9 @@ import edu.kpi.fbp.model.NetworkModel;
 
 /**
  * Code generator which generates Java code from network object model.
+ *
+ * $$Кодогенератор: генерує файл вихідного коду мережі JavaFBP.$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public final class CodeGenerator {

@@ -19,6 +19,10 @@ import edu.kpi.fbp.params.ComponentParameters;
 
 /**
  * Class which gives handy access to the component description (port names, array port sizes, parameters, etc).
+ *
+ * $$Клас, що надає зручний доступ до опису компонента (наприклад до імен портів, розміру портів-массивів, параметрів
+ * компонента, тощо).$$
+ *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public final class ComponentDescriptor {
@@ -29,8 +33,11 @@ public final class ComponentDescriptor {
 
   /**
    * Getter for component input port list.
-   * @param componentClass the component class
-   * @return the component input port list
+   *
+   * $$Віддати список вхідних портів компонента.$$
+   *
+   * @param componentClass the component class $$клас компонента$$
+   * @return the component input port list $$список вхідних портів компонента$$
    */
   public static List<InPort> getInputPorts(final Class<? extends Component> componentClass) {
     final List<InPort> ports = new ArrayList<InPort>();
@@ -50,8 +57,11 @@ public final class ComponentDescriptor {
 
   /**
    * Getter for component output port list.
-   * @param componentClass the component class
-   * @return the component output port list
+   *
+   * $$Віддати список вихідних портів компонента.$$
+   *
+   * @param componentClass the component class $$клас компонента$$
+   * @return the component output port list $$список вихідних портів компонента$$
    */
   public static List<OutPort> getOutputPorts(final Class<? extends Component> componentClass) {
     final List<OutPort> ports = new ArrayList<OutPort>();
@@ -71,8 +81,9 @@ public final class ComponentDescriptor {
 
   /**
    * Getter for component parameters list.
-   * @param componentClass the component class
-   * @return the component parameters list
+   * $$Віддати список параметрів компонента.$$
+   * @param componentClass the component class $$клас компонента$$
+   * @return the component parameters list $$список параметрів компонента$$
    */
   public static List<ComponentParameter> getParameters(final Class<? extends Component> componentClass) {
     final List<ComponentParameter> params = new ArrayList<ComponentParameter>();
@@ -92,7 +103,8 @@ public final class ComponentDescriptor {
 
   /**
    * Getter for component description.
-   * @param componentClass the component class
+   * $$Віддати опис компонента.$$
+   * @param componentClass the component class $$клас компонента$$
    * @return the component description
    */
   public static String getComponentDescription(final Class<? extends Component> componentClass) {
@@ -106,8 +118,9 @@ public final class ComponentDescriptor {
 
   /**
    * Is component self starting.
-   * @param componentClass the component class
-   * @return if this component is self-starting
+   * $$Чи э компонент самостартуючим? (Це параметр будь-якого компонента у JavaFBP).$$
+   * @param componentClass the component class $$клас компонента$$
+   * @return if this component is self-starting $$чи э компонент самостартуючим$$
    */
   public static boolean isComponentSelfStarting(final Class<? extends Component> componentClass) {
     final SelfStarting isSelfStarting = componentClass.getAnnotation(SelfStarting.class);
@@ -121,8 +134,9 @@ public final class ComponentDescriptor {
 
   /**
    * Is component must run.
-   * @param componentClass the component class
-   * @return if this component is self-starting
+   * $$Чи має компонент бути запущений хочаб один раз?$$
+   * @param componentClass the component class $$клас компонента$$
+   * @return if this component must run $$чи має компонент бути запущений хочаб один раз$$
    */
   public static boolean isComponentMustRun(final Class<? extends Component> componentClass) {
     final MustRun isMustRun = componentClass.getAnnotation(MustRun.class);
@@ -136,8 +150,10 @@ public final class ComponentDescriptor {
 
   /**
    * Getter for component priority.
-   * @param componentClass the component class
+   * $$Віддати пріоритет виконання потоку компонента.$$
+   * @param componentClass the component class $$клас компонента$$
    * @return if priority isn't defined for the component so "-1" is returned
+   *        $$приорітет виконання компоненту, або -1 якщо даний параметр не зазначено$$
    */
   public static int getComponentPriority(final Class<? extends Component> componentClass) {
     final Priority priority = componentClass.getAnnotation(Priority.class);
