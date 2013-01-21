@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.6
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'CoreFBP utils', 'Implementation-Version': version
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'resources'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master/repo"
+}
+
+dependencies {
+    compile 'edu.kpi.fbp:JavaFBP:1.0'
+    compile 'com.thoughtworks.xstream:xstream:1.4.2'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://localhost/home/mih/temp/ftp/maven2/")
+            pom.groupId = 'edu.kpi.fbp'
+        }
+    }
+}
