@@ -47,7 +47,7 @@ public final class ComponentsObserver {
    * @return the map of all available components
    */
   @SuppressWarnings("unchecked")
-  public Map<String, ComponentDescriptor> getAvailableComponentsSet() {
+  public Map<String, ComponentClassDescriptor> getAvailableComponentsSet() {
     final File [] jars = compDir.listFiles();
 
     final List<URL> jarsUrls = new ArrayList<URL>();
@@ -79,14 +79,14 @@ public final class ComponentsObserver {
     }
 
     final URLClassLoader cl = new URLClassLoader(jarsUrls.toArray(new URL [0]));
-    final Map<String, ComponentDescriptor> classMap = new HashMap<String, ComponentDescriptor>();
+    final Map<String, ComponentClassDescriptor> classMap = new HashMap<String, ComponentClassDescriptor>();
 
     for (final Entry<String, JarFile> entry : classNames.entrySet()) {
       Class<? extends Component> clazz;
       try {
         clazz = (Class<? extends Component>) cl.loadClass(entry.getKey());
         if (Component.class.isAssignableFrom(clazz)) {
-          classMap.put(entry.getKey(), new ComponentDescriptor(clazz, entry.getValue()));
+          classMap.put(entry.getKey(), new ComponentClassDescriptor(clazz, entry.getValue()));
         }
       } catch (final ClassNotFoundException e) {
         System.err.println("Can't load class " + entry.getKey());
@@ -107,7 +107,7 @@ public final class ComponentsObserver {
    * Component descriptor.
    * @author Pustovit Michael, pustovitm@gmail.com
    */
-  public static class ComponentDescriptor {
+  public static class ComponentClassDescriptor {
     /** Component jar. */
     private final JarFile componentJar;
 
@@ -118,7 +118,7 @@ public final class ComponentsObserver {
      * @param componentClass the component class
      * @param componentJar the jar which contains this class
      */
-    public ComponentDescriptor(final Class<? extends Component> componentClass, final JarFile componentJar) {
+    public ComponentClassDescriptor(final Class<? extends Component> componentClass, final JarFile componentJar) {
       this.componentClass = componentClass;
       this.componentJar = componentJar;
     }
