@@ -77,4 +77,67 @@ public class ComponentModel {
         + sourceUrl + "]";
   }
 
+  // Automatically generated hashTo and equals
+  //CHECKSTYLE:OFF
+  /**
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((className == null) ? 0 : className.hashCode());
+    result = prime * result + ((name == null) ? 0 : name.hashCode());
+    result = prime * result + ((portSizes == null) ? 0 : portSizes.hashCode());
+    result = prime * result + ((sourceUrl == null) ? 0 : sourceUrl.hashCode());
+    return result;
+  }
+
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final ComponentModel other = (ComponentModel) obj;
+    if (className == null) {
+      if (other.className != null) {
+        return false;
+      }
+    } else if (!className.equals(other.className)) {
+      return false;
+    }
+    if (name == null) {
+      if (other.name != null) {
+        return false;
+      }
+    } else if (!name.equals(other.name)) {
+      return false;
+    }
+    if (portSizes == null) {
+      if (other.portSizes != null) {
+        return false;
+      }
+    } else if (!portSizes.equals(other.portSizes)) {
+      return false;
+    }
+    if (sourceUrl == null) {
+      if (other.sourceUrl != null) {
+        return false;
+      }
+    } else if (!sourceUrl.equals(other.sourceUrl)) {
+      return false;
+    }
+    return true;
+  }
+  //CHECKSTYLE:ON
+
 }

@@ -85,4 +85,56 @@ public class NetworkModel {
     return "NetworkModel [components=" + components + ", links=" + links + ", extra=" + extra + "]";
   }
 
+  // Automatically generated hashTo and equals
+  //CHECKSTYLE:OFF
+  /**
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((components == null) ? 0 : components.hashCode());
+    result = prime * result + ((extra == null) ? 0 : extra.hashCode());
+    result = prime * result + ((links == null) ? 0 : links.hashCode());
+    result = prime * result + ((networkName == null) ? 0 : networkName.hashCode());
+    return result;
+  }
+
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    final NetworkModel other = (NetworkModel) obj;
+    if (components == null) {
+      if (other.components != null)
+        return false;
+    } else if (!components.equals(other.components))
+      return false;
+    if (extra == null) {
+      if (other.extra != null)
+        return false;
+    } else if (!extra.equals(other.extra))
+      return false;
+    if (links == null) {
+      if (other.links != null)
+        return false;
+    } else if (!links.equals(other.links))
+      return false;
+    if (networkName == null) {
+      if (other.networkName != null)
+        return false;
+    } else if (!networkName.equals(other.networkName))
+      return false;
+    return true;
+  }
+  // CHECKSTYLE:ON
+
 }

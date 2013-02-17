@@ -98,4 +98,67 @@ public class LinkModel {
         + ", toPort=" + toPort + "]";
   }
 
+  // Automatically generated hashTo and equals
+  //CHECKSTYLE:OFF
+  /**
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((fromComponent == null) ? 0 : fromComponent.hashCode());
+    result = prime * result + ((fromPort == null) ? 0 : fromPort.hashCode());
+    result = prime * result + ((toComponent == null) ? 0 : toComponent.hashCode());
+    result = prime * result + ((toPort == null) ? 0 : toPort.hashCode());
+    return result;
+  }
+
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final LinkModel other = (LinkModel) obj;
+    if (fromComponent == null) {
+      if (other.fromComponent != null) {
+        return false;
+      }
+    } else if (!fromComponent.equals(other.fromComponent)) {
+      return false;
+    }
+    if (fromPort == null) {
+      if (other.fromPort != null) {
+        return false;
+      }
+    } else if (!fromPort.equals(other.fromPort)) {
+      return false;
+    }
+    if (toComponent == null) {
+      if (other.toComponent != null) {
+        return false;
+      }
+    } else if (!toComponent.equals(other.toComponent)) {
+      return false;
+    }
+    if (toPort == null) {
+      if (other.toPort != null) {
+        return false;
+      }
+    } else if (!toPort.equals(other.toPort)) {
+      return false;
+    }
+    return true;
+  }
+  //CHECKSTYLE:ON
+
 }

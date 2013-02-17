@@ -25,44 +25,58 @@ import edu.kpi.fbp.params.ComponentParameters;
  *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
-public class ComponentDescriptor {
+public final class ComponentDescriptor {
 
   /** the component input port list $$список вхідних портів компонента$$. */
-  private final List<InPort> inPorts;
+  private List<InPort> inPorts;
 
   /** the component output port list $$список вихідних портів компонента$$. */
-  private final List<OutPort> outPorts;
+  private List<OutPort> outPorts;
 
   /** the component parameters list $$список параметрів компонента$$. */
-  private final List<ComponentParameter> parameters;
+  private List<ComponentParameter> parameters;
 
   /** the component description $$опис компоненту$$. */
-  private final String description;
+  private String description;
 
-  /** if this component is self-starting $$чи э компонент самостартуючим$$. */
-  private final boolean isComponentSelfStarting;
+  /** if this component is self-starting $$чи є компонент самостартуючим$$. */
+  private boolean isComponentSelfStarting;
 
   /** if this component must run $$чи має компонент бути запущений хочаб один раз$$. */
-  private final boolean isMustRun;
+  private boolean isMustRun;
 
   /**
    * if priority isn't defined for the component so "-1" is returned.
    * $$приорітет виконання компоненту, або -1 якщо даний параметр не зазначено$$
    */
-  private final int priority;
+  private int priority;
 
   /**
-   * Default constructor.
-   * @param componentClass the component class $$класс компонента, для якого будується дескриптор$$
+   * Descriptor should be created by buildDescriptor() factory method.
    */
-  public ComponentDescriptor(final Class<? extends Component> componentClass) {
-    inPorts = ComponentDescriptorUtils.getInputPorts(componentClass);
-    outPorts = ComponentDescriptorUtils.getOutputPorts(componentClass);
-    parameters = ComponentDescriptorUtils.getParameters(componentClass);
-    description = ComponentDescriptorUtils.getComponentDescription(componentClass);
-    isComponentSelfStarting = ComponentDescriptorUtils.isComponentSelfStarting(componentClass);
-    isMustRun = ComponentDescriptorUtils.isComponentMustRun(componentClass);
-    priority = ComponentDescriptorUtils.getComponentPriority(componentClass);
+  private ComponentDescriptor() {
+
+  }
+
+  /**
+   * Factory method for ComponentDescriptor.
+   * $$Factory method (метод, що будує екземпляр деякого классу) для дескриптора компонента.$$
+   *
+   * @param componentClass the component class $$класс компоненту, для якого будується дескриптор$$
+   * @return the component descriptor $$дескриптор компоненту$$
+   */
+  public static ComponentDescriptor buildDescriptor(final Class<? extends Component> componentClass) {
+    final ComponentDescriptor desc = new ComponentDescriptor();
+
+    desc.inPorts = ComponentDescriptorUtils.getInputPorts(componentClass);
+    desc.outPorts = ComponentDescriptorUtils.getOutputPorts(componentClass);
+    desc.parameters = ComponentDescriptorUtils.getParameters(componentClass);
+    desc.description = ComponentDescriptorUtils.getComponentDescription(componentClass);
+    desc.isComponentSelfStarting = ComponentDescriptorUtils.isComponentSelfStarting(componentClass);
+    desc.isMustRun = ComponentDescriptorUtils.isComponentMustRun(componentClass);
+    desc.priority = ComponentDescriptorUtils.getComponentPriority(componentClass);
+
+    return desc;
   }
 
   /**

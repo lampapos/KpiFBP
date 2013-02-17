@@ -10,15 +10,9 @@ jar {
     }
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-        resources {
-            srcDir 'resources'
-        }
-    }
+buildscript {
+  repositories { mavenCentral() }
+  dependencies { classpath 'org.ajoberstar:gradle-git:0.3.0' }
 }
 
 repositories {
@@ -29,6 +23,7 @@ repositories {
 dependencies {
     compile 'edu.kpi.fbp:JavaFBP:1.0'
     compile 'com.thoughtworks.xstream:xstream:1.4.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 uploadArchives {
@@ -39,3 +34,4 @@ uploadArchives {
         }
     }
 }
+
