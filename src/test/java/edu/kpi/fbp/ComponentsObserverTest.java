@@ -28,8 +28,11 @@ public final class ComponentsObserverTest {
     Assert.assertEquals(3, obs.getAvailableComponentsSet().size());
 
     final URLClassLoader cl = new URLClassLoader(new URL [] {componentsDir.toURI().toURL()});
-    final Class<?> clazz = cl.loadClass("edu.kpi.fbp.network.Summator");
-    Assert.assertEquals(clazz, obs.getAvailableComponentsSet().get("edu.kpi.fbp.network.Summator").getComponentClass());
+    final Class<?> clazz = cl.loadClass("edu.kpi.fbp.network.Generator");
+    Assert.assertEquals(clazz, obs.getAvailableComponentsSet().get("edu.kpi.fbp.network.Generator").getComponentClass());
+
+    Assert.assertNotEquals(clazz,
+        obs.getAvailableComponentsSet().get("edu.kpi.fbp.network.Summator").getComponentClass());
     cl.close();
   }
 }
