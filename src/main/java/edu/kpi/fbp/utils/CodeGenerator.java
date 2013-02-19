@@ -14,15 +14,17 @@ import edu.kpi.fbp.model.NetworkModel;
 public final class CodeGenerator {
   /** Main template. */
   private static final String MAIN_TEMPLATE =
-        "%1$s\n"
+        "import edu.kpi.fbp.javafbp.ParameterizedNetwork;\n"
+      + "import edu.kpi.fbp.params.ParametersStore;"
+      + "\n"
       + "/**\n"
       + " * Generated network.\n"
       + " */\n"
-      + "public class %2$s extends ParameterizedNetwork {\n"
+      + "public class %1$s extends ParameterizedNetwork {\n"
       + "  /**\n"
       + "   * @param paramStore the parameters store\n"
       + "   */\n"
-      + "  public %2$s(final ParametersStore paramStore) {\n"
+      + "  public %1$s(final ParametersStore paramStore) {\n"
       + "    super(paramStore);\n"
       + "  }\n"
       + "\n"
@@ -33,9 +35,9 @@ public final class CodeGenerator {
       + "  @Override\n"
       + "  protected void define() throws Exception {\n"
       + "    // Components\n"
-      + "%3$s\n"
+      + "%2$s\n"
       + "    // Links\n"
-      + "%4$s"
+      + "%3$s"
       + "  }\n"
       + "}";
 
@@ -43,7 +45,7 @@ public final class CodeGenerator {
   private static final String INDENT = "    ";
 
   /** Component declaration template. */
-  private static final String COMPONENT_TEMPLATE = "component(\"%1$s\", %2$s);";
+  private static final String COMPONENT_TEMPLATE = "component(\"%1$s\", %2$s.class);";
 
   /** Link declaration template. */
   private static final String LINK_TEMPLATE = "connect(\"%1$s.%2$s\", \"%3$s.%4$s\");";
@@ -83,16 +85,16 @@ public final class CodeGenerator {
     return builder.toString();
   }
 
-  private static String getImports(final NetworkModel model) {
-    final StringBuilder builder = new StringBuilder();
-
-    for (final ComponentModel comp : model.getComponents()) {
-      builder.append(String.format(IMPORT_TEMPLATE, comp.getClassName()));
-      builder.append("\n");
-    }
-
-    return builder.toString();
-  }
+//  private static String getImports(final NetworkModel model) {
+//    final StringBuilder builder = new StringBuilder();
+//
+//    for (final ComponentModel comp : model.getComponents()) {
+//      builder.append(String.format(IMPORT_TEMPLATE, comp.getClassName()));
+//      builder.append("\n");
+//    }
+//
+//    return builder.toString();
+//  }
 
   /**
    * Generates Java code from network object model.
@@ -100,11 +102,12 @@ public final class CodeGenerator {
    * @return the Java code string
    */
   public static String generate(final NetworkModel networkModel) {
-    final String imports = getImports(networkModel);
+//    final String imports = getImports(networkModel);
     final String networkName = networkModel.getNetworkName();
     final String components = getComponentDefinitions(networkModel);
     final String links = getLinkDefinitions(networkModel);
 
-    return String.format(MAIN_TEMPLATE, imports, networkName, components, links);
+//    return String.format(MAIN_TEMPLATE, imports, networkName, components, links);
+    return String.format(MAIN_TEMPLATE, networkName, components, links);
   }
 }

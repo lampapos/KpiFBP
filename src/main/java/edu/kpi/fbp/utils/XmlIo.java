@@ -60,4 +60,5 @@ public final class XmlIo {
 
     return (T) stream.fromXML(in);
   }
+
 }
