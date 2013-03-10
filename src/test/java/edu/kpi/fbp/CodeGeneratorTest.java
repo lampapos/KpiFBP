@@ -19,7 +19,9 @@ import edu.kpi.fbp.utils.XmlIo;
 public final class CodeGeneratorTest {
   /** Result code. */
   private static final String RESULT_CODE =
-            "import edu.kpi.fbp.javafbp.ParameterizedNetwork;\n"
+            "package edu.kpi.fbp;"
+          + "\n"
+          + "import edu.kpi.fbp.javafbp.ParameterizedNetwork;\n"
           + "import edu.kpi.fbp.params.ParametersStore;\n"
           + "/**\n"
           + " * Generated network.\n"
@@ -54,7 +56,8 @@ public final class CodeGeneratorTest {
    */
   @Test
   public void codeGenerationTest() {
-    final NetworkModel deserializedModel = XmlIo.deserialize(new File("src/test/resources/out.xml"), NetworkModel.class);
+    final NetworkModel deserializedModel =
+        XmlIo.deserialize(new File("src/test/resources/out_test.xml"), NetworkModel.class);
     Assert.assertEquals(RESULT_CODE, CodeGenerator.generate(deserializedModel));
   }
 }

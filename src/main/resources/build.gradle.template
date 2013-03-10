@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+version = '1.0'
+jar.baseName = 'SampleNetwork'
+
+jar {
+  from {
+    configurations.compile.collect {
+      it.isDirectory() ? it : zipTree(it)
+    } 
+  }
+  
+  manifest {
+    attributes(
+      'Implementation-Title': 'CoreFBP utils',
+      'Implementation-Version': version,
+      'Main-Class': 'edu.kpi.fbp.Start'
+    )
+  }
+}
+
+repositories {
+  mavenCentral()
+  mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
+}
+
+dependencies {
+  compile 'edu.kpi.fbp:JavaFBP:1.0'
+  compile 'edu.kpi.fbp:FBPComponentLib:1.0'
+  compile 'com.thoughtworks.xstream:xstream:1.4.2'
+  compile group: 'edu.kpi.fbp', name: 'FBPCore', version: '1.0'
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+
+jar {
+  from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}

@@ -75,7 +75,8 @@ public final class ModelBuilderTest {
    */
   @Test
   public void modelDeserializationTest() {
-    final NetworkModel deserializedModel = XmlIo.deserialize(new File("src/test/resources/out.xml"), NetworkModel.class);
+    final NetworkModel deserializedModel =
+        XmlIo.deserialize(new File("src/test/resources/out_test.xml"), NetworkModel.class);
     Assert.assertEquals(constructTestModel(), deserializedModel);
   }
 }

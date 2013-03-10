@@ -2,6 +2,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 //apply plugin: 'executable-jar'
+apply plugin: 'application'
+
+def toolingApiVersion = gradle.gradleVersion
 
 import org.ajoberstar.gradle.git.tasks.*
 
@@ -40,6 +43,9 @@ buildscript {
 }
 
 repositories {
+  maven {
+    url 'http://repo.gradle.org/gradle/libs-releases-local'
+  }
   mavenCentral()
   mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
 }
@@ -48,6 +54,9 @@ dependencies {
   compile 'edu.kpi.fbp:JavaFBP:1.0'
   compile 'edu.kpi.fbp:FBPComponentLib:1.0'
   compile 'com.thoughtworks.xstream:xstream:1.4.2'
+  compile "org.gradle:gradle-tooling-api:${toolingApiVersion}"
+  // Need an SLF4J implementation at runtime
+  runtime 'org.slf4j:slf4j-simple:1.6.6'
   testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 

@@ -14,7 +14,9 @@ import edu.kpi.fbp.model.NetworkModel;
 public final class CodeGenerator {
   /** Main template. */
   private static final String MAIN_TEMPLATE =
-        "import edu.kpi.fbp.javafbp.ParameterizedNetwork;\n"
+        "package edu.kpi.fbp;"
+      + "\n"
+      + "import edu.kpi.fbp.javafbp.ParameterizedNetwork;\n"
       + "import edu.kpi.fbp.params.ParametersStore;"
       + "\n"
       + "/**\n"
@@ -49,9 +51,6 @@ public final class CodeGenerator {
 
   /** Link declaration template. */
   private static final String LINK_TEMPLATE = "connect(\"%1$s.%2$s\", \"%3$s.%4$s\");";
-
-  /** Import declaration template. */
-  private static final String IMPORT_TEMPLATE = "import %s;";
 
   private CodeGenerator() {
     // do nothing
