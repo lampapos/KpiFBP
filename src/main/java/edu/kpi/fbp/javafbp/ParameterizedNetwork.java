@@ -36,7 +36,8 @@ public abstract class ParameterizedNetwork extends Network {
     for (final Component comp : getComponents().values()) {
       if (comp instanceof ParameterizedComponent) {
         final ParameterizedComponent castedComp = (ParameterizedComponent) comp;
-        final ParameterBundle parameters = parametersStore.getComponentParameters(comp.getName(), castedComp.getClass());
+        final ComponentDescriptor desc = ComponentDescriptor.buildDescriptor(castedComp.getClass());
+        final ParameterBundle parameters = parametersStore.getComponentParameters(comp.getName(), desc);
         castedComp.setParameters(parameters);
       }
     }

@@ -200,14 +200,14 @@ public final class ComponentDescriptor {
     public static List<ComponentParameter> getParameters(final Class<? extends Component> componentClass) {
       final List<ComponentParameter> params = new ArrayList<ComponentParameter>();
 
-      final ComponentParameter singlePort = componentClass.getAnnotation(ComponentParameter.class);
-      if (singlePort != null) {
-        params.add(singlePort);
+      final ComponentParameter singleParameter = componentClass.getAnnotation(ComponentParameter.class);
+      if (singleParameter != null) {
+        params.add(singleParameter);
       }
 
-      final ComponentParameters outPorts = componentClass.getAnnotation(ComponentParameters.class);
-      if (outPorts != null) {
-        params.addAll(Arrays.asList(outPorts.value()));
+      final ComponentParameters parameters = componentClass.getAnnotation(ComponentParameters.class);
+      if (parameters != null) {
+        params.addAll(Arrays.asList(parameters.value()));
       }
 
       return params;

@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import edu.kpi.fbp.javafbp.ComponentDescriptor;
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 
 
@@ -47,12 +47,12 @@ public class ParametersStore {
   /**
    * Component parameters getter.
    * @param componentName component name
-   * @param componentClass component class
+   * @param componentDescriptor component class descriptor
    * @return component parameters (all parameters. If some parameters aren't in store we use default values).
    */
   public ParameterBundle getComponentParameters(final String componentName,
-      final Class<? extends ParameterizedComponent> componentClass) {
-    final List<ComponentParameter> classParameters = getComponentClassParameters(componentClass);
+      final ComponentDescriptor componentDescriptor) {
+    final List<ComponentParameter> classParameters = componentDescriptor.getParameters();
 
     ParameterBundle definedParameters = store.get(componentName);
     if (definedParameters == null) {
