@@ -1,4 +1,7 @@
-<network name="SampleNetwork">
+<?xml version="1.0" encoding="UTF-8"?>
+<network 
+    xmlns="http://www.fict.kpi.edu/NetworkDefinitionSchema"
+    name="SampleNetwork">
   <components>
     <component className="edu.kpi.fbp.network.Generator" name="_Generate" sourceUrl="http://example.com"/>
     <component className="edu.kpi.fbp.network.Summator" name="_Sum" sourceUrl="http://example.com"/>
