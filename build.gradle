@@ -1,41 +1,28 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
-apply plugin: 'application'
 
-def toolingApiVersion = gradle.gradleVersion
-
-import org.ajoberstar.gradle.git.tasks.*
-
-sourceCompatibility = 1.6
-version = '1.1'
-
-task prin {
-  println configurations.compile
-}
+sourceCompatibility = 1.7
+version = '1.0'
 
 jar {
   manifest {
     attributes(
       'Implementation-Title': 'CoreFBP utils',
       'Implementation-Version': version,
-      'Main-Class': 'edu.kpi.fbp.Start'
     )
   }
 }
 
 repositories {
-  maven {
-    url 'http://repo.gradle.org/gradle/libs-releases-local'
-  }
   mavenCentral()
+  mavenRepo url: 'http://repo.gradle.org/gradle/libs-releases-local'
   mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
 }
 
 dependencies {
   compile 'edu.kpi.fbp:JavaFBP:1.0'
   compile 'com.thoughtworks.xstream:xstream:1.4.2'
-  compile "org.gradle:gradle-tooling-api:${toolingApiVersion}"
   compile 'org.slf4j:slf4j-simple:1.7.2'
   runtime 'org.slf4j:slf4j-api:1.7.2'
   testCompile group: 'junit', name: 'junit', version: '4.+'
@@ -46,11 +33,26 @@ task copyToLib(type: Copy) {
   from configurations.runtime
 }
 
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = 'sources'
+     from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourcesJar
+  archives javadocJar
+}
+
 uploadArchives {
   repositories {
     mavenDeployer {
       repository(url: "file:///windows/docs/prog/diploma/FBPRepo")
-//      repository(url: "./bbuild/repository/")
       pom.groupId = 'edu.kpi.fbp'
     }
   }

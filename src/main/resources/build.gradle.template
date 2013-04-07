@@ -23,13 +23,13 @@ jar {
 
 repositories {
   mavenCentral()
-  mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
+  mavenRepo url: 'http://repo.gradle.org/gradle/libs-releases-local'
+  mavenRepo url: "file:///windows/docs/prog/diploma/FBPRepo"
   
 }
 
 dependencies {
   compile 'edu.kpi.fbp:JavaFBP:1.0'
-  //compile 'edu.kpi.fbp:FBPCore:1.0'
-  compile files('/windows/docs/prog/workspaces/magister_diploma_ws/FBPCore/build/libs/FBPCore-1.0.jar')
-  compile files('/windows/docs/prog/workspaces/magister_diploma_ws/FBPComponentLib/build/libs/FBPComponentLib-1.0.jar')
+  compile 'edu.kpi.fbp:FBPCore:1.0'
+  compile 'edu.kpi.fbp:FBPComponentLib:1.0'
 }
