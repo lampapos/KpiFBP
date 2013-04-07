@@ -10,6 +10,13 @@ import com.jpmorrsn.fbp.engine.Packet;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 import edu.kpi.fbp.network.datastucts.NamedValue;
 
+/**
+ * Base class for components that have single input port and produce single number as result.
+ *
+ * @param <InType> input package type
+ * @param <OutType> output package type
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = NamedValue.class)
 public abstract class SingleNumberStatComponent<InType, OutType> extends Component {
@@ -19,6 +26,10 @@ public abstract class SingleNumberStatComponent<InType, OutType> extends Compone
   private InputPort inPort;
   private OutputPort outPort;
 
+  /**
+   * @param in the input package
+   * @return packet processing result
+   */
   protected abstract OutType strategy(InType in);
 
   @Override

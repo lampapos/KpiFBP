@@ -19,7 +19,8 @@ import edu.kpi.fbp.params.ParameterType;
 @InPorts({
     @InPort(value = "InPort1", type = Integer.class, description = "Simple in port"),
     @InPort(value = "InPort2", type = String.class),
-    @InPort(value = "InSECOND_ARR*", type = Byte.class, fixedSize = true, setDimension = 4)})
+    @InPort(value = "InSECOND_ARR*", type = Byte.class, fixedSize = true, setDimension = 3)
+    })
 @OutPorts({
   @OutPort(value = "OutPort1", type = String.class),
   @OutPort(value = "OutPort2", type = Byte.class),

@@ -12,6 +12,11 @@ import edu.kpi.fbp.params.ComponentParameter;
 import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
+/**
+ * Html labeler (output: label + value).
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPort(HtmlLabeler.PORT_IN)
 @OutPort(value = HtmlLabeler.PORT_OUT, type = HtmlNode.class)
 @ComponentParameter(name = HtmlLabeler.PARAM_TEXT, type = ParameterType.STRING, defaultValue = "")

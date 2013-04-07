@@ -15,6 +15,11 @@ import edu.kpi.fbp.params.ComponentParameter;
 import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
+/**
+ * The HTML report builder.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @ComponentParameter(name = HtmlReport.PARAM_BUILD_DIR,  type = ParameterType.STRING, defaultValue = "reportBuild")
 @InPort(value = HtmlReport.PORT_IN, arrayPort = true)
 public class HtmlReport extends ParameterizedComponent {

@@ -14,6 +14,11 @@ import edu.kpi.fbp.params.ComponentParameter;
 import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
+/**
+ * TSV files reader.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @ComponentParameter(name = TsvReader.PARAM_FILE_URL, type = ParameterType.STRING, defaultValue = "")
 @OutPort(value = TsvReader.PORT_OUT_COLUMNS, arrayPort = true, type = NamedArray.class)
 public class TsvReader extends ParameterizedComponent {
@@ -75,15 +80,27 @@ public class TsvReader extends ParameterizedComponent {
   }
 
 
+  /**
+   * TSV file column object model.
+   *
+   * @author Pustovit Michael, pustovitm@gmail.com
+   */
   public static class Column extends ArrayList<Double> implements NamedArray<Double> {
     private static final long serialVersionUID = -2978161943480846484L;
 
     private final String title;
 
+    /**
+     * @param title the column title
+     */
     public Column(final String title) {
       this.title = title;
     }
 
+    /**
+     * @see edu.kpi.fbp.network.datastucts.NamedArray#getName()
+     * @return the list name
+     */
     public String getName() {
       return title;
     }

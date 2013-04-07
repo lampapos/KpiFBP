@@ -6,6 +6,11 @@ import com.jpmorrsn.fbp.engine.OutPort;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 import edu.kpi.fbp.network.datastucts.NamedValue;
 
+/**
+ * Average value block.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = NamedValue.class)
 public class Average extends SingleNumberStatComponent<NamedArray<Double>, NamedValue<Double>> {

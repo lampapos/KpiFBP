@@ -1,4 +1,4 @@
-FBPCore
+KpiFBP
 =======
 
-Flow-based programming tool
+Flow-based programming framework extension

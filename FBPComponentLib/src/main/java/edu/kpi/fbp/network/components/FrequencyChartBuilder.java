@@ -46,6 +46,9 @@ public class FrequencyChartBuilder extends ParameterizedComponent {
 
   private static final String HTML_TEMPLATE = "<img src=\"%s\">";
 
+  private static final int DIAGRAM_HEIGHT = 400;
+  private static final int DIAGRAM_WIDTH = 600;
+
   private String imgFileName;
   private int rangesCount;
   private String buildFolderName;
@@ -117,7 +120,7 @@ public class FrequencyChartBuilder extends ParameterizedComponent {
 
       final String imgName = String.format(imgFileName, id);
       final String imgPath = buildFolderName + File.separator + imgName;
-      ChartUtilities.saveChartAsPNG(new File(imgPath), chart, 600, 400);
+      ChartUtilities.saveChartAsPNG(new File(imgPath), chart, DIAGRAM_WIDTH, DIAGRAM_HEIGHT);
       id++;
 
       drop(pack);
