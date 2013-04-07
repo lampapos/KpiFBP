@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.7
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'edu.kpi.JavaFBP core network components', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
+}
+
+dependencies {
+    compile group: 'edu.kpi.fbp', name: 'JavaFBP', version: '1.0'
+    compile group: 'edu.kpi.fbp', name: 'FBPCore', version: '1.0'
+    compile 'jfree:jfreechart:1.0.13'
+}
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = 'sources'
+     from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourcesJar
+  archives javadocJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:///windows/docs/prog/diploma/FBPRepo")
+            pom.groupId = 'edu.kpi.fbp'
+        }
+    }
+}
