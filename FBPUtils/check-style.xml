@@ -5,6 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
+    Checkstyle-Configuration: FBP
     Description: none
 -->
 <module name="Checker">
@@ -48,7 +49,7 @@
     <module name="NoWhitespaceAfter"/>
     <module name="NoWhitespaceBefore"/>
     <module name="OperatorWrap">
-        <property name="tokens" value="PLUS" default="false" />
+      <property name="tokens" value="PLUS"/>
     </module>
     <module name="ParenPad"/>
     <module name="WhitespaceAfter">
@@ -123,6 +124,9 @@
     <property name="severity" value="ignore"/>
     <property name="allowLegacy" value="true"/>
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+  </module>
+  <module name="SuppressionFilter">
+    <property name="file" value="${samedir}/suppressions.xml" />
   </module>
   <module name="NewlineAtEndOfFile"/>
   <module name="Translation"/>
