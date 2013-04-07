@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,https://github.com/lampapos/FBPCore.git,master,."/>
+<project reference="1.0,https://github.com/lampapos/FBPGraph.git,master,."/>
+<project reference="1.0,https://github.com/lampapos/JavaFBP.git,master,."/>
+</provider>
+</psf>

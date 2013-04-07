@@ -1,0 +1,5 @@
+<?xml version="1.0"?> 
+<!-- place this file in user home directory -->
+<properties> 
+<tracing>false</tracing>
+</properties> 

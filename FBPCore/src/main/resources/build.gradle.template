@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+version = '1.0'
+jar.baseName = 'SampleNetwork'
+
+jar {
+  from {
+    configurations.compile.collect {
+      it.isDirectory() ? it : zipTree(it)
+   } 
+  }
+  
+  manifest {
+    attributes(
+      'Implementation-Title': 'FBP network',
+      'Implementation-Version': version,
+      'Main-Class': 'edu.kpi.fbp.Start'
+    )
+  }
+}
+
+repositories {
+  mavenCentral()
+  mavenRepo url: 'http://repo.gradle.org/gradle/libs-releases-local'
+  mavenRepo url: "file:///windows/docs/prog/diploma/FBPRepo"
+  
+}
+
+dependencies {
+  compile 'edu.kpi.fbp:JavaFBP:1.0'
+  compile 'edu.kpi.fbp:FBPCore:1.0'
+  compile 'edu.kpi.fbp:FBPComponentLib:1.0'
+}
