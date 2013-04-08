@@ -1,7 +1,7 @@
 package edu.kpi.fbp.network.components;
 
-import java.io.File;
-import java.net.URI;
+import java.io.BufferedInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,10 +38,9 @@ public class TsvReader extends ParameterizedComponent {
 
   @Override
   protected void execute() throws Exception {
-    final URI tsvFileUrl = new URI(fileUrl);
-    final File file = new File(tsvFileUrl);
+    final URL tsvFileUrl = new URL(fileUrl);
 
-    final Scanner scanner = new Scanner(file);
+    final Scanner scanner = new Scanner(new BufferedInputStream(tsvFileUrl.openStream()));
     final String[] titles = scanner.nextLine().split(SEPARATOR);
     final Column[] columns = new Column[titles.length];
 
