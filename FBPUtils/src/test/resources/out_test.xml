@@ -8,5 +8,16 @@
     <link fromComponent="_Generate" fromPort="OUT" toComponent="_Sum" toPort="IN"/>
     <link fromComponent="_Sum" fromPort="OUT" toComponent="_Print_result" toPort="IN"/>
   </links>
+  <parameters>
+    <networkHash>0</networkHash>
+    <store>
+      <entry>
+        <string>_Generate</string>
+        <bundle>
+          <parameter name="count">101</parameter>
+        </bundle>
+      </entry>
+    </store>
+  </parameters>
   <extra/>
 </network>

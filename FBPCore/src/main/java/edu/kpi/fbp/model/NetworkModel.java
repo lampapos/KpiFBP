@@ -7,6 +7,8 @@ import java.util.Map;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
+import edu.kpi.fbp.params.ParametersStore;
+
 /**
  * Network structure.
  *
@@ -27,6 +29,8 @@ public class NetworkModel {
   /** Network links. */
   private final List<LinkModel> links;
 
+  private final ParametersStore parameters;
+
   /** Extra network info (graphic information, etc). */
   private final Map<String, Object> extra;
 
@@ -35,16 +39,19 @@ public class NetworkModel {
    * @param networkName the network name $$Назва мережі$$
    * @param components the list of network components $$Перелік компонентів мережі$$
    * @param links the list of network links $$Перелік зв'язків мережі$$
+   * @param parameters the network components parameters
    * @param extra the extra network information $$Додаткова інформація про мережу (наприклад, для відображення мережі)$$
    */
   public NetworkModel(
       final String networkName,
       final List<ComponentModel> components,
       final List<LinkModel> links,
+      final ParametersStore parameters,
       final Map<String, Object> extra) {
     this.networkName = networkName;
     this.components = components;
     this.links = links;
+    this.parameters = parameters;
     if (extra != null) {
       this.extra = extra;
     } else {
@@ -74,6 +81,13 @@ public class NetworkModel {
   }
 
   /**
+   * @return the network parameter store
+   */
+  public ParametersStore getParameters() {
+    return parameters;
+  }
+
+  /**
    * @return the network extra information $$Додаткова інформація про мережу (наприклад, для відображення мережі)$$
    */
   public final Map<String, Object> getExtra() {
@@ -83,6 +97,20 @@ public class NetworkModel {
   @Override
   public String toString() {
     return "NetworkModel [components=" + components + ", links=" + links + ", extra=" + extra + "]";
+  }
+
+
+  /**
+   * Object hash code (but hash function doesn't include "extra" fields).
+   * @return the unique network code
+   */
+  public int getUniqueCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((components == null) ? 0 : components.hashCode());
+    result = prime * result + ((links == null) ? 0 : links.hashCode());
+    result = prime * result + ((networkName == null) ? 0 : networkName.hashCode());
+    return result;
   }
 
   // Automatically generated hashTo and equals

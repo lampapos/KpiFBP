@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -19,6 +21,9 @@ import edu.kpi.fbp.javafbp.ParameterizedComponent;
  */
 @XStreamAlias("ParametersStore")
 public class ParametersStore {
+  /** The network hash. */
+  private int networkHash;
+
   /** Parameters store in form of map <component name, component parameters bundle>. */
   private Map<String, ParameterBundle> store;
 
@@ -73,17 +78,39 @@ public class ParametersStore {
   }
 
   /**
+   * Parameter store is created for single network, and we should validate this network when use parameter store.
+   *
+   * @return the network hash
+   */
+  public int getNetworkHash() {
+    return networkHash;
+  }
+
+  /**
+   * @return the store components parameters set (set with entries "component name" + "parameters list")
+   */
+  public Set<Entry<String, ParameterBundle>> getStoreComponentParametersSet() {
+    return store.entrySet();
+  }
+
+  /**
    * Parameter store builder.
    * @author Pustovit Michael, pustovitm@gmail.com
    */
   public static class Builder {
 
+    private final int networkId;
+
     /** Result store. */
     private final Map<String, ParameterBundle> store;
 
-    /** Default constructor. */
-    public Builder() {
+    /**
+     * Default constructor.
+     * @param networkId the network unique ID
+     */
+    public Builder(final int networkId) {
       store = new HashMap<String, ParameterBundle>();
+      this.networkId = networkId;
     }
 
     /**
@@ -104,6 +131,7 @@ public class ParametersStore {
       final ParametersStore res = new ParametersStore();
 
       res.store = store;
+      res.networkHash = networkId;
 
       return res;
     }

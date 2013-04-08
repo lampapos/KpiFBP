@@ -15,6 +15,8 @@ import edu.kpi.fbp.model.NetworkModel;
 import edu.kpi.fbp.network.Generator;
 import edu.kpi.fbp.network.PrintResult;
 import edu.kpi.fbp.network.Summator;
+import edu.kpi.fbp.params.Parameter;
+import edu.kpi.fbp.params.ParametersStore;
 import edu.kpi.fbp.utils.XmlIo;
 
 /**
@@ -38,6 +40,17 @@ public final class ModelBuilderTest {
       + "    <link fromComponent=\"_Generate\" fromPort=\"OUT\" toComponent=\"_Sum\" toPort=\"IN\"/>\n"
       + "    <link fromComponent=\"_Sum\" fromPort=\"OUT\" toComponent=\"_Print_result\" toPort=\"IN\"/>\n"
       + "  </links>\n"
+      + "  <parameters>\n"
+      + "    <networkHash>0</networkHash>\n"
+      + "    <store>\n"
+      + "      <entry>\n"
+      + "        <string>_Generate</string>\n"
+      + "        <bundle>\n"
+      + "          <parameter name=\"count\">101</parameter>\n"
+      + "        </bundle>\n"
+      + "      </entry>\n"
+      + "    </store>\n"
+      + "  </parameters>\n"
       + "  <extra/>\n"
       + "</network>";
 
@@ -52,7 +65,15 @@ public final class ModelBuilderTest {
     links.add(new LinkModel("_Generate", "OUT", "_Sum", "IN"));
     links.add(new LinkModel("_Sum", "OUT", "_Print_result", "IN"));
 
-    final NetworkModel netModel = new NetworkModel("SampleNetwork", components, links, null);
+    final List<Parameter> parameters1 = new ArrayList<Parameter>();
+    parameters1.add(new Parameter("count", "101"));
+
+    final ParametersStore paramStore =
+        new ParametersStore.Builder(0)
+          .addComponentConfiguration("_Generate", parameters1)
+          .build();
+
+    final NetworkModel netModel = new NetworkModel("SampleNetwork", components, links, paramStore, null);
     return netModel;
   }
 

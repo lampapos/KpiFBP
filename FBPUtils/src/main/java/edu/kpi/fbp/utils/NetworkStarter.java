@@ -22,7 +22,7 @@ public final class NetworkStarter {
    * @throws Exception any exception
    */
   public static void startNetwork(final NetworkModel model) throws Exception {
-    startNetwork(model, null);
+    startNetwork(model, model.getParameters());
   }
 
   /**
@@ -32,6 +32,10 @@ public final class NetworkStarter {
    * @throws Exception any exception
    */
   public static void startNetwork(final NetworkModel model, final ParametersStore parametersStore) throws Exception {
+    if (parametersStore.getNetworkHash() != model.getUniqueCode()) {
+      throw new IllegalArgumentException("Unique network code and parameter store code aren't equal.");
+    }
+
     new UniversalModel(parametersStore, model).go();
   }
 

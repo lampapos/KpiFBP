@@ -19,7 +19,8 @@ jar {
 repositories {
   mavenCentral()
   mavenRepo url: 'http://repo.gradle.org/gradle/libs-releases-local'
-  mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
+//    mavenRepo url: "https://raw.github.com/lampapos/FBPRepo/master"
+    mavenRepo url: "file:///windows/docs/prog/diploma/FBPRepo"
 }
 
 dependencies {

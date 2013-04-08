@@ -23,7 +23,7 @@ public abstract class ParameterizedNetwork extends Network {
    */
   public ParameterizedNetwork(final ParametersStore paramStore) {
     if (paramStore == null) {
-      this.parametersStore = new ParametersStore.Builder().build();
+      this.parametersStore = new ParametersStore.Builder(0).build();
     } else {
       this.parametersStore = paramStore;
     }

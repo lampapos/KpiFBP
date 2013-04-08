@@ -159,4 +159,11 @@ public class ParameterBundle {
   public boolean contains(final String name) {
     return store.containsKey(name);
   }
+
+  /**
+   * @return the parameters list
+   */
+  public List<Parameter> getParameters() {
+    return parameters;
+  }
 }
