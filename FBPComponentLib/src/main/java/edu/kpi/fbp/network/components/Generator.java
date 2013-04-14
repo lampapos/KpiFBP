@@ -19,7 +19,7 @@ import edu.kpi.fbp.params.ParameterType;
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @ComponentDescription("Generates stream of packets under control of a counter")
-@OutPort(value = "OUT", description = "Generated stream", type = Integer.class, arrayPort = true)
+@OutPort(value = "OUT", description = "Generated stream", type = Integer.class)
 @ComponentParameter(name = Generator.PARAM_COUNT_NAME, type = ParameterType.INTEGER, defaultValue = "100")
 public class Generator extends ParameterizedComponent {
 

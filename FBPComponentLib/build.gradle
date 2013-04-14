@@ -4,6 +4,19 @@ apply plugin: 'maven'
 
 sourceCompatibility = 1.7
 version = '1.0'
+
+buildscript {
+  repositories {
+      mavenCentral()
+  }
+
+  dependencies {
+      classpath 'eu.appsatori:gradle-fatjar-plugin:0.2-rc1'
+  }
+}
+
+apply plugin: 'fatjar'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'edu.kpi.JavaFBP core network components', 'Implementation-Version': version
@@ -45,4 +58,9 @@ uploadArchives {
             pom.groupId = 'edu.kpi.fbp'
         }
     }
+}
+
+task copyToLib(type: Copy) {
+  into "$buildDir/output/lib"
+  from configurations.runtime
 }

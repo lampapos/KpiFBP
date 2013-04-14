@@ -2,12 +2,9 @@ package edu.kpi.fbp.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.jar.JarEntry;
@@ -48,16 +45,15 @@ public final class ComponentsObserver {
    */
   @SuppressWarnings("unchecked")
   public Map<String, ComponentClassDescriptor> getAvailableComponentsSet() {
-    final File [] jars = compDir.listFiles();
+    final URLClassLoader cl = Utils.getJarsClassLoader(compDir);
 
-    final List<URL> jarsUrls = new ArrayList<URL>();
+    final File [] jars = compDir.listFiles();
     final Map<String, JarFile> classNames = new HashMap<String, JarFile>();
     for (final File f : jars) {
       if (f.getName().endsWith(".jar")) {
         JarFile jar = null;
         try {
           jar = new JarFile(f);
-          jarsUrls.add(new URL("jar", "", "file:" + f.getAbsolutePath() + "!/"));
           final Enumeration<JarEntry> entries = jar.entries();
           while (entries.hasMoreElements()) {
             final JarEntry e = entries.nextElement();
@@ -78,9 +74,7 @@ public final class ComponentsObserver {
       }
     }
 
-    final URLClassLoader cl = new URLClassLoader(jarsUrls.toArray(new URL [0]));
     final Map<String, ComponentClassDescriptor> classMap = new HashMap<String, ComponentClassDescriptor>();
-
     for (final Entry<String, JarFile> entry : classNames.entrySet()) {
       Class<? extends Component> clazz;
       try {
@@ -90,6 +84,8 @@ public final class ComponentsObserver {
         }
       } catch (final ClassNotFoundException e) {
         System.err.println("Can't load class " + entry.getKey());
+        e.printStackTrace();
+      } catch (final NoClassDefFoundError e) {
         e.printStackTrace();
       }
     }

@@ -1,8 +1,8 @@
 <network name="SampleNetwork">
   <components>
-    <component className="edu.kpi.fbp.network.Generator" name="_Generate" sourceUrl="http://example.com"/>
-    <component className="edu.kpi.fbp.network.Summator" name="_Sum" sourceUrl="http://example.com"/>
-    <component className="edu.kpi.fbp.network.PrintResult" name="_Print_result" sourceUrl="http://example.com"/>
+    <component className="edu.kpi.fbp.network.components.Generator" name="_Generate" sourceUrl="http://example.com"/>
+    <component className="edu.kpi.fbp.network.components.Summator" name="_Sum" sourceUrl="http://example.com"/>
+    <component className="edu.kpi.fbp.network.components.PrintResult" name="_Print_result" sourceUrl="http://example.com"/>
   </components>
   <links>
     <link fromComponent="_Generate" fromPort="OUT" toComponent="_Sum" toPort="IN"/>
