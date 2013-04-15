@@ -1,12 +1,12 @@
 package edu.kpi.fbp.network.components;
 
-import com.jpmorrsn.fbp.engine.Component;
 import com.jpmorrsn.fbp.engine.InPort;
 import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.OutPort;
 import com.jpmorrsn.fbp.engine.OutputPort;
 import com.jpmorrsn.fbp.engine.Packet;
 
+import edu.kpi.fbp.javafbp.ParameterizedComponent;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 import edu.kpi.fbp.network.datastucts.NamedValue;
 
@@ -19,7 +19,7 @@ import edu.kpi.fbp.network.datastucts.NamedValue;
  */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = NamedValue.class)
-public abstract class SingleNumberStatComponent<InType, OutType> extends Component {
+public abstract class SingleNumberStatComponent<InType, OutType> extends ParameterizedComponent {
   public static final String PORT_IN = "IN";
   public static final String PORT_OUT = "OUT";
 

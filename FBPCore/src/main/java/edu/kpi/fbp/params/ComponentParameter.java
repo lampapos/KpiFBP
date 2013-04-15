@@ -24,7 +24,7 @@ public @interface ComponentParameter {
    * The parameter name.
    * $$Назва параметру.$$
    */
-  String name();
+  String port();
 
   /**
    * The parameter type (used for user input validation). ParameterType constants should be used.

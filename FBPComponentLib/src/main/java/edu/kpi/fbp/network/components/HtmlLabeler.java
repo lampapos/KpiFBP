@@ -1,6 +1,7 @@
 package edu.kpi.fbp.network.components;
 
 import com.jpmorrsn.fbp.engine.InPort;
+import com.jpmorrsn.fbp.engine.InPorts;
 import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.OutPort;
 import com.jpmorrsn.fbp.engine.OutputPort;
@@ -9,7 +10,6 @@ import com.jpmorrsn.fbp.engine.Packet;
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 import edu.kpi.fbp.network.datastucts.HtmlNode;
 import edu.kpi.fbp.params.ComponentParameter;
-import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
 /**
@@ -17,24 +17,27 @@ import edu.kpi.fbp.params.ParameterType;
  *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
-@InPort(HtmlLabeler.PORT_IN)
+@InPorts({
+  @InPort(HtmlLabeler.PORT_IN),
+  @InPort(value = HtmlLabeler.PORT_TEXT, type = String.class)
+})
 @OutPort(value = HtmlLabeler.PORT_OUT, type = HtmlNode.class)
-@ComponentParameter(name = HtmlLabeler.PARAM_TEXT, type = ParameterType.STRING, defaultValue = "")
+@ComponentParameter(port = HtmlLabeler.PORT_TEXT, type = ParameterType.STRING, defaultValue = "")
 public class HtmlLabeler extends ParameterizedComponent {
   public static final String PORT_IN = "IN";
+  public static final String PORT_TEXT = "TEXT";
   public static final String PORT_OUT = "OUT";
-
-  public static final String PARAM_TEXT = "text";
 
   private static final String HTML_TEMPLATE = "<p>%s %s</p>";
 
   private InputPort inPort;
+  private InputPort inPortText;
   private OutputPort outPort;
-
-  private String text;
 
   @Override
   protected void execute() throws Exception {
+    final String text = readParam(inPortText);
+
     Packet<?> pack;
     while ((pack = inPort.receive()) != null) {
       final String body = String.format(HTML_TEMPLATE, text, pack.getContent().toString());
@@ -55,12 +58,8 @@ public class HtmlLabeler extends ParameterizedComponent {
   @Override
   protected void openPorts() {
     inPort = openInput(PORT_IN);
+    inPortText = openInput(PORT_TEXT);
     outPort = openOutput(PORT_OUT);
-  }
-
-  @Override
-  public void setParameters(final ParameterBundle arg0) {
-    text = arg0.getString(PARAM_TEXT);
   }
 
 }

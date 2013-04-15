@@ -9,5 +9,8 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer"/>
 	<classpathentry kind="con" path="org.springsource.ide.eclipse.gradle.dsld.classpathcontainer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FBPCore"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JavaFBP"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FBPComponentLib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

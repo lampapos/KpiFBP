@@ -1,8 +1,8 @@
 package edu.kpi.fbp.javafbp;
 
 import com.jpmorrsn.fbp.engine.Component;
-
-import edu.kpi.fbp.params.ParameterBundle;
+import com.jpmorrsn.fbp.engine.InputPort;
+import com.jpmorrsn.fbp.engine.Packet;
 
 /**
  * Base class for all parameterized components.
@@ -12,14 +12,12 @@ import edu.kpi.fbp.params.ParameterBundle;
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public abstract class ParameterizedComponent extends Component {
-
-  /**
-   * This method should initialize parameters values.
-   *
-   * $$Цей метод має бути перевизначений у класі-реалізаціх і при його визові, параметри будуть передані до компоненту.$$
-   *
-   * @param bundle the parameter bundle
-   */
-  public abstract void setParameters(final ParameterBundle bundle);
-
+  protected <T> T readParam(final InputPort port) {
+    @SuppressWarnings("unchecked")
+    final Packet<T> pack = port.receive();
+    final T res = pack.getContent();
+    drop(pack);
+    port.close();
+    return res;
+  }
 }

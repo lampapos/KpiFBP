@@ -67,10 +67,10 @@ public class ParametersStore {
     final List<Parameter> res = new ArrayList<Parameter>();
 
     for (final ComponentParameter param : classParameters) {
-      if (definedParameters.contains(param.name())) {
-        res.add(definedParameters.get(param.name()));
+      if (definedParameters.contains(param.port())) {
+        res.add(definedParameters.get(param.port()));
       } else {
-        res.add(new Parameter(param.name(), param.defaultValue()));
+        res.add(new Parameter(param.port(), param.defaultValue()));
       }
     }
 

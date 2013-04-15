@@ -2,13 +2,14 @@ package edu.kpi.fbp.network.components;
 
 
 import com.jpmorrsn.fbp.engine.ComponentDescription;
+import com.jpmorrsn.fbp.engine.InPort;
+import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.OutPort;
 import com.jpmorrsn.fbp.engine.OutputPort;
 import com.jpmorrsn.fbp.engine.Packet;
 
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 import edu.kpi.fbp.params.ComponentParameter;
-import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
 /**
@@ -19,21 +20,27 @@ import edu.kpi.fbp.params.ParameterType;
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 @ComponentDescription("Generates stream of packets under control of a counter")
-@OutPort(value = "OUT", description = "Generated stream", type = Integer.class)
-@ComponentParameter(name = Generator.PARAM_COUNT_NAME, type = ParameterType.INTEGER, defaultValue = "100")
+@OutPort(value = Generator.PORT_OUT, description = "Generated stream", type = Integer.class)
+@InPort(value = Generator.PORT_IN_COUNT, description = "Generated packets count", type = Integer.class)
+@ComponentParameter(port = Generator.PORT_IN_COUNT, type = ParameterType.INTEGER, defaultValue = "100")
 public class Generator extends ParameterizedComponent {
 
-  /** Name of parameter "count". */
-  public static final String PARAM_COUNT_NAME = "count";
+  public static final String PORT_OUT = "OUT";
+  public static final String PORT_IN_COUNT = "COUNT";
 
   /** Output number count. */
   private int generationCount;
 
   /** Output port. */
   OutputPort outport;
+  InputPort countPort;
 
   @Override
   protected void execute() {
+    final Packet<Integer> countPacket = countPort.receive();
+    generationCount = countPacket.getContent();
+    drop(countPacket);
+
     for (int i = 0; i < generationCount; i++) {
       @SuppressWarnings("unchecked")
       final Packet<Integer> p = create(2);
@@ -44,10 +51,7 @@ public class Generator extends ParameterizedComponent {
   @Override
   protected void openPorts() {
     outport = openOutput("OUT");
+    countPort = openInput(PORT_IN_COUNT);
   }
 
-  @Override
-  public void setParameters(final ParameterBundle bundle) {
-    generationCount = bundle.getInt(PARAM_COUNT_NAME);
-  }
 }

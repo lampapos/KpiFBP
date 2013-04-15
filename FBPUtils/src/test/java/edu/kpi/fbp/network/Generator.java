@@ -8,7 +8,6 @@ import com.jpmorrsn.fbp.engine.Packet;
 
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 import edu.kpi.fbp.params.ComponentParameter;
-import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
 /**
@@ -20,7 +19,7 @@ import edu.kpi.fbp.params.ParameterType;
  */
 @ComponentDescription("Generates stream of packets under control of a counter")
 @OutPort(value = "OUT", description = "Generated stream", type = Integer.class)
-@ComponentParameter(name = Generator.PARAM_COUNT_NAME, type = ParameterType.INTEGER, defaultValue = "100")
+@ComponentParameter(port = Generator.PARAM_COUNT_NAME, type = ParameterType.INTEGER, defaultValue = "100")
 public class Generator extends ParameterizedComponent {
 
   /** Name of parameter "count". */
@@ -46,8 +45,4 @@ public class Generator extends ParameterizedComponent {
     outport = openOutput("OUT");
   }
 
-  @Override
-  public void setParameters(final ParameterBundle bundle) {
-    generationCount = bundle.getInt(PARAM_COUNT_NAME);
-  }
 }

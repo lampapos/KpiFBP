@@ -13,13 +13,13 @@ import edu.kpi.fbp.network.datastucts.NamedValue;
  */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = NamedValue.class)
-public class StandartDeviation extends SingleNumberStatComponent<NamedArray<Double>, NamedValue<Double>> {
+public class StandartDeviation extends SingleNumberStatComponent<NamedArray<Float>, NamedValue<Float>> {
 
   @Override
-  protected NamedValue<Double> strategy(final NamedArray<Double> column) {
-    Double sum = 0d;
+  protected NamedValue<Float> strategy(final NamedArray<Float> column) {
+    Float sum = 0f;
     int nullValues = 0;
-    for (final Double d : column) {
+    for (final Float d : column) {
       if (d == null) {
         nullValues++;
       } else {
@@ -29,22 +29,22 @@ public class StandartDeviation extends SingleNumberStatComponent<NamedArray<Doub
 
     final String columnName = column.getName();
     final int count = column.size() - nullValues;
-    final Double aver = new Double(sum / count);
+    final Float aver = new Float(sum / count);
 
     double deviSum = 0;
-    for (final Double d : column) {
+    for (final Float d : column) {
       if (d != null) {
         deviSum += (d - aver) * (d - aver);
       }
     }
-    final double devi = Math.sqrt(deviSum / count);
+    final float devi = (float) Math.sqrt(deviSum / count);
 
-    return new NamedValue<Double>() {
+    return new NamedValue<Float>() {
       public String getName() {
         return columnName;
       }
 
-      public Double getValue() {
+      public Float getValue() {
         return devi;
       }
 

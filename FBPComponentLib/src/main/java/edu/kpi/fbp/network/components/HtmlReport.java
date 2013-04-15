@@ -3,16 +3,18 @@ package edu.kpi.fbp.network.components;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.jpmorrsn.fbp.engine.InPort;
+import com.jpmorrsn.fbp.engine.InPorts;
 import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.Packet;
 
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 import edu.kpi.fbp.network.datastucts.HtmlNode;
 import edu.kpi.fbp.params.ComponentParameter;
-import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
 /**
@@ -20,25 +22,25 @@ import edu.kpi.fbp.params.ParameterType;
  *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
-@ComponentParameter(name = HtmlReport.PARAM_BUILD_DIR,  type = ParameterType.STRING, defaultValue = "reportBuild")
-@InPort(value = HtmlReport.PORT_IN, arrayPort = true)
+@InPorts({
+  @InPort(value = HtmlReport.PORT_IN, arrayPort = true),
+  @InPort(value = HtmlReport.PORT_BUILD_DIR, type = String.class)
+})
+
+@ComponentParameter(port = HtmlReport.PORT_BUILD_DIR,  type = ParameterType.STRING, defaultValue = "reportBuild")
 public class HtmlReport extends ParameterizedComponent {
   public static final String PORT_IN = "IN";
-
-  public static final String PARAM_BUILD_DIR = "buildDir";
+  public static final String PORT_BUILD_DIR = "BUILD_DIR";
 
   private InputPort[] inPorts;
 
-  private String builtDirectory;
-
-  @Override
-  public void setParameters(final ParameterBundle paramBundle) {
-    builtDirectory = paramBundle.getString(PARAM_BUILD_DIR);
-  }
+  private InputPort inPortDirectory;
 
   @SuppressWarnings("unchecked")
   @Override
   protected void execute() throws Exception {
+    final String builtDirectory = readParam(inPortDirectory);
+
     final List<List<HtmlNode>> nodes = new ArrayList<List<HtmlNode>>();
 
     for (final InputPort port : inPorts) {
@@ -58,8 +60,19 @@ public class HtmlReport extends ParameterizedComponent {
     strBuilder.append("<html>\n");
 
     for (int i = 0; i < nodes.get(0).size(); i++) {
+      final List<HtmlNode> htmlBlock = new ArrayList<HtmlNode>();
       for (final List<HtmlNode> list : nodes) {
-        strBuilder.append(list.get(i).getHtml());
+        htmlBlock.add(list.get(i));
+      }
+
+      Collections.sort(htmlBlock, new Comparator<HtmlNode>() {
+        public int compare(final HtmlNode o1, final HtmlNode o2) {
+          return o1.getPriority() - o2.getPriority();
+        }
+      });
+
+      for (final HtmlNode node : htmlBlock) {
+        strBuilder.append(node.getHtml());
         strBuilder.append("\n");
       }
     }
@@ -79,6 +92,7 @@ public class HtmlReport extends ParameterizedComponent {
   @Override
   protected void openPorts() {
     inPorts = openInputArray(PORT_IN);
+    inPortDirectory = openInput(PORT_BUILD_DIR);
   }
 
 }

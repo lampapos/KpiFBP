@@ -27,7 +27,9 @@ public final class Utils {
   public static URLClassLoader getJarsClassLoader(final File... compDirs) {
     final List<File> jars = new ArrayList<>();
     for (final File f : compDirs) {
-      jars.addAll(Arrays.asList(f.listFiles()));
+      if (f != null) {
+        jars.addAll(Arrays.asList(f.listFiles()));
+      }
     }
 
     final List<URL> jarsUrls = new ArrayList<URL>();

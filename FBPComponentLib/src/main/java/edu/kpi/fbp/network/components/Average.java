@@ -13,13 +13,13 @@ import edu.kpi.fbp.network.datastucts.NamedValue;
  */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = NamedValue.class)
-public class Average extends SingleNumberStatComponent<NamedArray<Double>, NamedValue<Double>> {
+public class Average extends SingleNumberStatComponent<NamedArray<Float>, NamedValue<Float>> {
 
   @Override
-  protected NamedValue<Double> strategy(final NamedArray<Double> column) {
+  protected NamedValue<Float> strategy(final NamedArray<Float> column) {
     Double sum = 0d;
     int nullValues = 0;
-    for (final Double d : column) {
+    for (final Float d : column) {
       if (d == null) {
         nullValues++;
       } else {
@@ -28,14 +28,14 @@ public class Average extends SingleNumberStatComponent<NamedArray<Double>, Named
     }
 
     final String columnName = column.getName();
-    final Double aver = new Double(sum / (column.size() - nullValues));
+    final Float aver = new Float(sum / (column.size() - nullValues));
 
-    return new NamedValue<Double>() {
+    return new NamedValue<Float>() {
       public String getName() {
         return columnName;
       }
 
-      public Double getValue() {
+      public Float getValue() {
         return aver;
       }
 

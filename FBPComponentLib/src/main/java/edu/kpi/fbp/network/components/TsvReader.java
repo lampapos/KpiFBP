@@ -2,16 +2,17 @@ package edu.kpi.fbp.network.components;
 
 import java.io.BufferedInputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.jpmorrsn.fbp.engine.InPort;
+import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.OutPort;
 import com.jpmorrsn.fbp.engine.OutputPort;
 
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
+import edu.kpi.fbp.network.datastucts.Column;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 import edu.kpi.fbp.params.ComponentParameter;
-import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParameterType;
 
 /**
@@ -19,25 +20,27 @@ import edu.kpi.fbp.params.ParameterType;
  *
  * @author Pustovit Michael, pustovitm@gmail.com
  */
-@ComponentParameter(name = TsvReader.PARAM_FILE_URL, type = ParameterType.STRING, defaultValue = "")
+@InPort(value = TsvReader.PORT_FILE_URL, type = String.class)
 @OutPort(value = TsvReader.PORT_OUT_COLUMNS, arrayPort = true, type = NamedArray.class)
+@ComponentParameter(port = TsvReader.PORT_FILE_URL, type = ParameterType.STRING, defaultValue = "")
 public class TsvReader extends ParameterizedComponent {
   private static final String SEPARATOR = "[ \\t]+";
   private static final String NULL_ENTRY = "*";
 
-  public static final String PARAM_FILE_URL = "fileUrl";
+  public static final String PORT_FILE_URL = "fileUrl";
   public static final String PORT_OUT_COLUMNS = "COLUMNS";
 
-  private String fileUrl;
+  private InputPort inPortFileUrl;
   private OutputPort[] outPorts;
 
   @Override
-  public void setParameters(final ParameterBundle arg0) {
-    fileUrl = arg0.getString(PARAM_FILE_URL);
-  }
-
-  @Override
   protected void execute() throws Exception {
+    final String fileUrl = readParam(inPortFileUrl);
+
+    if (fileUrl.isEmpty()) {
+      System.err.println("TSVREADER: In file path can't be empty");
+    }
+
     final URL tsvFileUrl = new URL(fileUrl);
 
     final Scanner scanner = new Scanner(new BufferedInputStream(tsvFileUrl.openStream()));
@@ -57,7 +60,7 @@ public class TsvReader extends ParameterizedComponent {
         if (entries[i].equals(NULL_ENTRY)) {
           columns[i].add(null);
         } else {
-          columns[i].add(Double.parseDouble(entries[i]));
+          columns[i].add(Float.parseFloat(entries[i]));
         }
       }
     }
@@ -75,48 +78,7 @@ public class TsvReader extends ParameterizedComponent {
 
   @Override
   protected void openPorts() {
+    inPortFileUrl = openInput(PORT_FILE_URL);
     outPorts = openOutputArray(PORT_OUT_COLUMNS);
-  }
-
-
-  /**
-   * TSV file column object model.
-   *
-   * @author Pustovit Michael, pustovitm@gmail.com
-   */
-  public static class Column extends ArrayList<Double> implements NamedArray<Double> {
-    private static final long serialVersionUID = -2978161943480846484L;
-
-    private final String title;
-
-    /**
-     * @param title the column title
-     */
-    public Column(final String title) {
-      this.title = title;
-    }
-
-    /**
-     * @see edu.kpi.fbp.network.datastucts.NamedArray#getName()
-     * @return the list name
-     */
-    public String getName() {
-      return title;
-    }
-
-    @Override
-    public String toString() {
-      final StringBuilder strBuilder = new StringBuilder();
-
-      strBuilder.append(title);
-      strBuilder.append("\n");
-
-      for (final Double d : this) {
-        strBuilder.append(d);
-        strBuilder.append("\n");
-      }
-
-      return strBuilder.toString();
-    }
   }
 }
