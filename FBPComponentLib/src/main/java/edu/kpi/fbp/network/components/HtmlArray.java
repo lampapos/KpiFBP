@@ -6,6 +6,11 @@ import com.jpmorrsn.fbp.engine.OutPort;
 import edu.kpi.fbp.network.datastucts.HtmlNode;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 
+/**
+ * Component which builds HTML representation of named array.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPort(value = SingleNumberStatComponent.PORT_IN, type = NamedArray.class)
 @OutPort(value = SingleNumberStatComponent.PORT_OUT, type = HtmlNode.class)
 public class HtmlArray extends SingleNumberStatComponent<NamedArray<?>, HtmlNode> {

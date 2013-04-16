@@ -1,7 +1,11 @@
 package edu.kpi.fbp.params.adapters;
 
-import edu.kpi.fbp.params.ParameterAdapter;
 
+/**
+ * Float adapter.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 public class FloatAdapter implements ParameterAdapter<Float> {
 
   @Override

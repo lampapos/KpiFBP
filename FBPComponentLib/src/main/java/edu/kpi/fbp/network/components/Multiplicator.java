@@ -1,5 +1,6 @@
 package edu.kpi.fbp.network.components;
 
+import com.jpmorrsn.fbp.engine.ComponentDescription;
 import com.jpmorrsn.fbp.engine.InPort;
 import com.jpmorrsn.fbp.engine.InputPort;
 import com.jpmorrsn.fbp.engine.OutPort;
@@ -8,8 +9,17 @@ import com.jpmorrsn.fbp.engine.Packet;
 
 import edu.kpi.fbp.javafbp.ParameterizedComponent;
 
+/**
+ * Component which has single input port and array of output ports. It just copy value from input port to the
+ * all out ports.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPort(Multiplicator.PORT_IN)
 @OutPort(value = Multiplicator.PORT_OUT, arrayPort = true)
+@ComponentDescription(
+    "Component which has single input port and array of output ports. It just copy value from input port to the\n"
+  + "all out ports.")
 public class Multiplicator extends ParameterizedComponent {
 
   public static final String PORT_IN = "IN";

@@ -12,6 +12,11 @@ import edu.kpi.fbp.network.datastucts.Column;
 import edu.kpi.fbp.network.datastucts.NamedArray;
 import edu.kpi.fbp.network.datastucts.NamedValue;
 
+/**
+ * Component which normalizes array  ((arr[i] - average) / standard deviation).
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 @InPorts({
   @InPort(value = ArrayNormalizer.PORT_IN_ARRAY, type = NamedArray.class),
   @InPort(value = ArrayNormalizer.PORT_IN_AVERAGE, type = NamedValue.class),

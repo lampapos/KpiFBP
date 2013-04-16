@@ -1,7 +1,11 @@
 package edu.kpi.fbp.params.adapters;
 
-import edu.kpi.fbp.params.ParameterAdapter;
 
+/**
+ * Boolean adapter.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 public class BooleanAdapter implements ParameterAdapter<Boolean> {
 
   @Override

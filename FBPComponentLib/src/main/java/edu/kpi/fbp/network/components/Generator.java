@@ -35,6 +35,7 @@ public class Generator extends ParameterizedComponent {
   OutputPort outport;
   InputPort countPort;
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void execute() {
     final Packet<Integer> countPacket = countPort.receive();
@@ -42,7 +43,6 @@ public class Generator extends ParameterizedComponent {
     drop(countPacket);
 
     for (int i = 0; i < generationCount; i++) {
-      @SuppressWarnings("unchecked")
       final Packet<Integer> p = create(2);
       outport.send(p);
     }

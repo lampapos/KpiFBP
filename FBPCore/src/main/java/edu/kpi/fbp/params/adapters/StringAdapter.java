@@ -1,7 +1,11 @@
 package edu.kpi.fbp.params.adapters;
 
-import edu.kpi.fbp.params.ParameterAdapter;
 
+/**
+ * String adapter.
+ *
+ * @author Pustovit Michael, pustovitm@gmail.com
+ */
 public class StringAdapter implements ParameterAdapter<String> {
 
   @Override

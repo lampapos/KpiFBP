@@ -7,12 +7,12 @@ import com.jpmorrsn.fbp.engine.InPort;
 import com.jpmorrsn.fbp.engine.Network;
 
 import edu.kpi.fbp.params.Parameter;
-import edu.kpi.fbp.params.ParameterAdapter;
 import edu.kpi.fbp.params.ParameterBundle;
 import edu.kpi.fbp.params.ParametersStore;
 import edu.kpi.fbp.params.adapters.BooleanAdapter;
 import edu.kpi.fbp.params.adapters.FloatAdapter;
 import edu.kpi.fbp.params.adapters.IntegerAdapter;
+import edu.kpi.fbp.params.adapters.ParameterAdapter;
 import edu.kpi.fbp.params.adapters.StringAdapter;
 
 /**

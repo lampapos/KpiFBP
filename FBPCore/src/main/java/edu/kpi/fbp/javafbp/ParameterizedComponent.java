@@ -12,6 +12,12 @@ import com.jpmorrsn.fbp.engine.Packet;
  * @author Pustovit Michael, pustovitm@gmail.com
  */
 public abstract class ParameterizedComponent extends Component {
+  /**
+   * Utility method for handy parameter initialization.
+   * @param port the port from which parameter will be read
+   * @param <T> the init value type
+   * @return the init value
+   */
   protected <T> T readParam(final InputPort port) {
     @SuppressWarnings("unchecked")
     final Packet<T> pack = port.receive();
