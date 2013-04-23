@@ -76,7 +76,7 @@ public final class CodeGenerator {
   private static final String ADD_TO_LIST_PATTERN = "%1$s.add(new Parameter(\"%2$s\", \"%3$s\"));";
   private static final String PARAM_STORE_ADD_COMPONENT_PATTERN = "paramStoreBuilder.addComponentConfiguration(\"%1$s\", %2$s);";
   private static final String PARAM_STORE_BUILD_PATTERN = "final ParametersStore pStore = paramStoreBuilder.build();";
-  private static final String SUPER_PATTERN = "return pStore;";
+  private static final String RETURN_PATTERN = "return pStore;";
 
   private CodeGenerator() {
     // do nothing
@@ -112,6 +112,11 @@ public final class CodeGenerator {
 
   private static String getParameterStoreDefinition(final NetworkModel model) {
     final ParametersStore paramStore = model.getParameters();
+
+    if (paramStore == null) {
+      return "return null;";
+    }
+
     final Iterator<Entry<String, ParameterBundle>> iter = paramStore.getStoreComponentParametersSet().iterator();
 
     final String indent = INDENT + INDENT;
@@ -148,7 +153,7 @@ public final class CodeGenerator {
     s.append(PARAM_STORE_BUILD_PATTERN);
     s.append("\n");
     s.append(indent);
-    s.append(SUPER_PATTERN);
+    s.append(RETURN_PATTERN);
     s.append("\n");
 
     return s.toString();

@@ -2,6 +2,7 @@ package edu.kpi.fbp.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public final class ComponentsObserver {
       Class<? extends Component> clazz;
       try {
         clazz = (Class<? extends Component>) cl.loadClass(entry.getKey());
-        if (Component.class.isAssignableFrom(clazz)) {
+        if (Component.class.isAssignableFrom(clazz) && !Modifier.isAbstract(clazz.getModifiers())) {
           classMap.put(entry.getKey(), new ComponentClassDescriptor(clazz, entry.getValue()));
         }
       } catch (final ClassNotFoundException e) {

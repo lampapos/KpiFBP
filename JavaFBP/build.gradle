@@ -27,7 +27,7 @@ artifacts {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "file://localhost/home/mih/temp/ftp/maven2/")
+            repository(url: "file:///windows/docs/prog/diploma/FBPRepo")
             pom.groupId = 'edu.kpi.fbp'
         }
     }
