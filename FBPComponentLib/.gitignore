@@ -1,8 +1,0 @@
-*.class
-*.war
-*.ear
-/bin
-/build
-/.gradle
-/.settings
-*~
